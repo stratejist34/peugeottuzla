@@ -47,6 +47,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-mobile.png"
+          media="(max-width: 768px)"
+          fetchPriority="high"
+        />
+      </head>
       <body
         className={`${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} antialiased bg-[#050505] text-white`}
       >
