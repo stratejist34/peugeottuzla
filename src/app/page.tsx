@@ -83,32 +83,28 @@ const KlasOtoPremium = () => {
             style={{ transformStyle: 'preserve-3d' }}
             className="absolute inset-0 w-full h-full origin-left"
           >
-            {/* Desktop Hero Image (Hidden on Mobile) */}
-            <div className="hidden md:block absolute inset-0">
-              <Image
+            <picture className="absolute inset-0 w-full h-full">
+              {/* Mobile Image (< 768px) - High Priority */}
+              <source
+                media="(max-width: 768px)"
+                srcSet="/images/hero-mobile.png"
+              />
+              {/* Desktop Image (>= 769px) */}
+              <source
+                media="(min-width: 769px)"
+                srcSet="/images/2022_peugeot_308_7_2560x1440.jpg"
+              />
+              {/* Fallback Image - Critical for LCP */}
+              <img
                 src="/images/2022_peugeot_308_7_2560x1440.jpg"
-                alt="Hero Background Desktop"
-                fill
-                priority
-                quality={75}
-                sizes="100vw"
-                className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
+                alt="Hero Background"
+                className="object-cover w-full h-full opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
+                // @ts-expect-error - fetchpriority is a valid attribute but React might complain
+                fetchpriority="high"
+                width="2560"
+                height="1440"
               />
-            </div>
-
-            {/* Mobile Hero Image (Visible only on Mobile) */}
-            <div className="md:hidden absolute inset-0">
-              <Image
-                src="/images/hero-mobile.png"
-                alt="Hero Background Mobile"
-                fill
-                priority
-                fetchPriority="high"
-                quality={75}
-                sizes="100vw"
-                className="object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
-              />
-            </div>
+            </picture>
             {/* Gradients also rotate to keep scene consistent */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#07090f] via-[#07090f]/70 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent" />
