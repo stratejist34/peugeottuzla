@@ -105,6 +105,7 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Mobil Menüyü Aç/Kapat"
                     className="lg:hidden z-[10000] relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 group"
                 >
                     <motion.span

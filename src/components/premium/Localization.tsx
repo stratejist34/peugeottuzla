@@ -114,6 +114,7 @@ const Localization = () => {
                                 allowFullScreen={true}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
+                                title="Klas Oto Servis Konumu"
                             ></iframe>
 
                             {/* Overlay Button */}

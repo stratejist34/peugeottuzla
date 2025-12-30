@@ -9,18 +9,21 @@ const archivoBlack = Archivo_Black({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-archivo-black',
+  display: 'swap',
 });
 
 const outfit = Outfit({
   weight: ['400', '600', '800'],
   subsets: ['latin'],
   variable: '--font-outfit',
+  display: 'swap',
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   variable: '--font-plus-jakarta-sans',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

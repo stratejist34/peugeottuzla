@@ -88,6 +88,8 @@ const KlasOtoPremium = () => {
               alt="Hero Background"
               fill
               priority
+              fetchPriority="high"
+              sizes="100vw"
               className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
             />
             {/* Gradients also rotate to keep scene consistent */}
