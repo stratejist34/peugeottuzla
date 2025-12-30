@@ -24,14 +24,14 @@ const Footer = () => {
                                 alt="Klas Oto Logo"
                             />
                         </div>
-                        <p className="text-gray-500 leading-relaxed mb-8 font-medium">
+                        <p className="text-gray-400 leading-relaxed mb-8 font-medium">
                             Peugeot ve Citroen araçlarınız için yetkili servis standartlarında hizmet sunuyoruz. 20 yıllık uzmanlık tecrübemiz ile yanınızdayız.
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">Hızlı Erişim</h4>
-                        <ul className="space-y-4 text-gray-500 font-normal text-sm">
+                        <h3 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">Hızlı Erişim</h3>
+                        <ul className="space-y-4 text-gray-400 font-normal text-sm">
                             <li><Link href="/" className="hover:text-white transition-colors">Anasayfa</Link></li>
                             <li><Link href="/servisler" className="hover:text-white transition-colors">Servisler</Link></li>
                             <li><Link href="/hakkimizda" className="hover:text-white transition-colors">Hakkımızda</Link></li>
@@ -41,8 +41,8 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">Servis Bölgeleri</h4>
-                        <ul className="space-y-4 text-gray-500 font-normal text-sm">
+                        <h3 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">Servis Bölgeleri</h3>
+                        <ul className="space-y-4 text-gray-400 font-normal text-sm">
                             <li className="flex items-center gap-2 hover:text-white transition-colors"><MapPin size={14} className="text-amber-custom" /> Tuzla Sanayi Sitesi</li>
                             <li className="flex items-center gap-2 hover:text-white transition-colors"><MapPin size={14} className="text-amber-custom" /> Gebze Oto Sanayi</li>
                             <li className="flex items-center gap-2 hover:text-white transition-colors"><MapPin size={14} className="text-amber-custom" /> Pendik Bölgesi</li>
@@ -51,8 +51,8 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">İletişim</h4>
-                        <p className="text-gray-500 text-sm font-normal leading-relaxed mb-6">
+                        <h3 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">İletişim</h3>
+                        <p className="text-gray-400 text-sm font-normal leading-relaxed mb-6">
                             Aydıntepe, Fedakar Sokağı Tuzla oto Sanayi Sitesi B-2 Blok No:39/123, 34903 Tuzla/İstanbul
                         </p>
                         <a
@@ -69,7 +69,7 @@ const Footer = () => {
                     <p className="text-gray-600 text-xs font-normal tracking-normal">
                         © 2025 Klas Oto Peugeot & Citroen Özel Servis. Tüm hakları saklıdır.
                     </p>
-                    <div className="flex gap-8 text-xs font-normal text-gray-600 tracking-normal">
+                    <div className="flex gap-8 text-xs font-normal text-gray-500 tracking-normal">
                         <a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a>
                         <a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a>
                     </div>

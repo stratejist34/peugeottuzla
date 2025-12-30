@@ -58,7 +58,7 @@ const Localization = () => {
                                         <MapPin size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">ADRES</h4>
+                                        <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-1">ADRES</h3>
                                         <p className="text-gray-400 text-sm leading-relaxed">Aydınlı, Tuzla Sanayi Sitesi, 34947 <br /> Tuzla / İstanbul</p>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@ const Localization = () => {
                                         <Phone size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">TELEFON</h4>
+                                        <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-1">TELEFON</h3>
                                         <p className="text-gray-400 text-sm leading-relaxed">+90 (542) 198 51 34</p>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ const Localization = () => {
                                         <Clock size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">MESAİ</h4>
+                                        <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-1">MESAİ</h3>
                                         <p className="text-gray-400 text-sm leading-relaxed">Pzt - Cmt: 08:30 - 19:00 <br /> Pazar: Kapalı</p>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@ const Localization = () => {
                                 <div key={i} className="flex flex-col gap-3">
                                     {signal.icon}
                                     <h5 className="text-white font-bold text-xs uppercase tracking-widest">{signal.title}</h5>
-                                    <p className="text-gray-500 text-[10px] leading-relaxed">{signal.desc}</p>
+                                    <p className="text-gray-400 text-[10px] leading-relaxed">{signal.desc}</p>
                                 </div>
                             ))}
                         </div>
