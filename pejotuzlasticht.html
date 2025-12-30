@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Klas Oto - Premium Servis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Outfit', 'sans-serif'],
+                },
+                colors: {
+                    premium: {
+                        dark: '#0B0F19',
+                        card: '#151B2B',
+                        accent: '#3B82F6', // Bright Blue
+                        highlight: '#F59E0B', // Amber
+                        text: '#F3F4F6',
+                        muted: '#9CA3AF'
+                    }
+                },
+                animation: {
+                    'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    'float-slow': 'float 8s ease-in-out infinite',
+                    'spin-slow': 'spin 20s linear infinite',
+                },
+                keyframes: {
+                    fadeInUp: {
+                        '0%': { opacity: '0', transform: 'translateY(40px)' },
+                        '100%': { opacity: '1', transform: 'translateY(0)' },
+                    },
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-20px)' },
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style type="text/tailwindcss">
+    @layer utilities {
+        .text-shadow {
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .glass-panel {
+            @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+        }
+        .glass-card {
+            @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 transition-all duration-500 hover:border-premium-accent/50;
+        }
+        .reveal-scroll {
+            view-timeline-name: --reveal;
+            view-timeline-axis: block;
+            animation-timeline: --reveal;
+            animation-name: fadeInUp;
+            animation-range: entry 10% cover 30%;
+            animation-fill-mode: both;
+        }
+    }.magnetic-wrap {
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .magnetic-wrap:hover {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body class="bg-premium-dark text-premium-text antialiased overflow-x-hidden">
+<nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-premium-dark/80 backdrop-blur-lg border-b border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-24">
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-premium-accent to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:rotate-180 transition-transform duration-700">
+<span class="material-symbols-outlined text-white text-2xl">build_circle</span>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tighter text-white uppercase leading-none">Klas<span class="text-premium-accent">Oto</span></h1>
+<p class="text-[10px] tracking-[0.2em] text-premium-muted uppercase mt-1">Premium Service</p>
+</div>
+</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group" href="#">
+                    ANASAYFA
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-premium-accent transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group" href="#services">
+                    HİZMETLER
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-premium-accent transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group" href="#about">
+                    KURUMSAL
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-premium-accent transition-all duration-300 group-hover:w-full"></span>
+</a>
+<div class="magnetic-wrap">
+<a class="inline-flex items-center px-8 py-3 rounded-full bg-white text-premium-dark font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all" href="#contact">
+                        RANDEVU AL
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_outward</span>
+</a>
+</div>
+</div>
+<button class="md:hidden text-white p-2">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-fixed bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvLUeOO8v_oHy8A0UEou1GkFMukYybRqpwa02YqFHI-eLUgHCB9RgX5FhLjA1BQedUr6amDRMKYPYHCZRpe5dTskguJiRfU6gQhjEHuaQ3teOw_qXk3Eb8QODu2CnMF1fIJMlyvcJn44_wLQI8HGgle9sVZLSjDlOcoaWM-lJM5CyvDeqMMsTQncSCfQU6j0zvLAR4rY2ckBMdwv7sG3flCZdLBaDhszZT21y5ME8H-sthEPMV7SnU4JrPmtaskB02BH--gFuC1Fdc');">
+<div class="absolute inset-0 bg-gradient-to-r from-premium-dark via-premium-dark/90 to-premium-dark/40 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-premium-dark via-transparent to-transparent"></div>
+</div>
+<div class="absolute top-1/4 right-10 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
+<div class="absolute bottom-1/4 left-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+<div class="relative z-10 container mx-auto px-4 pt-20">
+<div class="max-w-4xl">
+<div class="overflow-hidden mb-6">
+<span class="inline-block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-premium-accent text-xs font-bold tracking-widest uppercase animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Peugeot &amp; Citroën Yetkili Uzmanlığı
+                </span>
+</div>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-8 animate-fade-in-up" style="animation-delay: 0.4s;">
+                KUSURSUZ <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">PERFORMANS.</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-400 max-w-xl mb-12 font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.6s;">
+                Aracınızın potansiyelini 19 yıllık tecrübe ile zirveye taşıyoruz. Modern teknoloji ve uzman dokunuşlarla güvenli sürüşün keyfini çıkarın.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 animate-fade-in-up" style="animation-delay: 0.8s;">
+<a class="magnetic-wrap group relative inline-flex items-center justify-center px-8 py-4 bg-premium-accent text-white font-bold rounded-full overflow-hidden transition-all hover:bg-blue-600" href="#services">
+<span class="relative z-10 flex items-center gap-2">
+                        Hizmetleri Keşfet
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+<div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</a>
+<a class="magnetic-wrap inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:border-white text-white font-medium rounded-full transition-colors backdrop-blur-sm" href="tel:05421985134">
+<span class="material-symbols-outlined mr-2">call</span>
+                    Hemen Ara
+                </a>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
+<div class="w-1 h-1 bg-white rounded-full animate-ping"></div>
+</div>
+</div>
+</section>
+<section class="py-20 border-b border-white/5 relative bg-premium-dark">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center group reveal-scroll">
+<div class="text-4xl md:text-6xl font-bold text-white mb-2 group-hover:text-premium-accent transition-colors duration-500">19+</div>
+<div class="text-xs uppercase tracking-[0.2em] text-gray-500">Yıllık Tecrübe</div>
+</div>
+<div class="text-center group reveal-scroll">
+<div class="text-4xl md:text-6xl font-bold text-white mb-2 group-hover:text-premium-accent transition-colors duration-500">15K</div>
+<div class="text-xs uppercase tracking-[0.2em] text-gray-500">Servis Saati</div>
+</div>
+<div class="text-center group reveal-scroll">
+<div class="text-4xl md:text-6xl font-bold text-white mb-2 group-hover:text-premium-accent transition-colors duration-500">100%</div>
+<div class="text-xs uppercase tracking-[0.2em] text-gray-500">Memnuniyet</div>
+</div>
+<div class="text-center group reveal-scroll">
+<div class="text-4xl md:text-6xl font-bold text-white mb-2 group-hover:text-premium-accent transition-colors duration-500">2.5K</div>
+<div class="text-xs uppercase tracking-[0.2em] text-gray-500">Mutlu Müşteri</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 relative overflow-hidden bg-premium-card" id="about">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b from-blue-900/20 to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+<div class="lg:w-1/2 reveal-scroll">
+<div class="flex items-center gap-4 mb-6">
+<div class="h-px w-12 bg-premium-accent"></div>
+<span class="text-premium-accent font-bold tracking-widest uppercase text-sm">Kurumsal Kimlik</span>
+</div>
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+                    Aracınızı <br/>
+<span class="text-gray-500">Tanıyan Uzmanlar.</span>
+</h2>
+<p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    Klas Oto olarak, sadece bir servis değil, aracınızın performans ortağıyız. Peugeot ve Citroën markalarındaki derin uzmanlığımız, en karmaşık mekanik ve elektronik sorunları bile hassasiyetle çözmemizi sağlar.
+                </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-gray-300">
+<span class="material-symbols-outlined text-premium-accent">check_circle</span>
+<span>Orijinal parça garantisi ve şeffaf süreç</span>
+</li>
+<li class="flex items-center gap-3 text-gray-300">
+<span class="material-symbols-outlined text-premium-accent">check_circle</span>
+<span>İleri teknoloji arıza tespit cihazları</span>
+</li>
+<li class="flex items-center gap-3 text-gray-300">
+<span class="material-symbols-outlined text-premium-accent">check_circle</span>
+<span>Tuzla, Gebze ve Pendik bölgesinde hızlı servis</span>
+</li>
+</ul>
+<a class="text-white font-bold border-b-2 border-premium-accent pb-1 hover:text-premium-accent transition-colors inline-flex items-center gap-2" href="#contact">
+                    Servis Bölgelerimiz
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="lg:w-1/2 relative flex justify-center reveal-scroll">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-[500px] h-[500px] border border-white/5 rounded-full animate-spin-slow"></div>
+<div class="w-[400px] h-[400px] border border-dashed border-white/10 rounded-full absolute animate-spin-slow" style="animation-direction: reverse;"></div>
+</div>
+<div class="relative z-10 transition-transform duration-700 ease-out transform hover:scale-105 hover:-rotate-2 group cursor-pointer">
+<img alt="Top Down Car View" class="w-full max-w-md mx-auto drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBG0vGvx2wnh82941ti-DQ0P0K4vRMH5U0C4_yihrKM7gvdE7uEvFteiALZenpp9eCz9eJUVgsGR-aCVUdsECok6bRNt6GBY9iPo4jr8ALpznF8LQYWBMudpWfmLNDsYNpEkUk0XaYF52a1qGzqU5iimVeySSd5m-GkFolkeEIuMFpGgS_WtzSb8pgLLIPehdBPfoxzWZXeWoMZmAsM_iJD8-9HhIvzI3uLBk-EuaYTkI2H3UeitvKTtTuj_EaIIeR1uMb_WPGjK61"/>
+<div class="absolute -top-10 -right-4 glass-panel p-4 rounded-xl flex items-center gap-3 animate-float-slow">
+<div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<p class="text-xs text-gray-400 uppercase">Motor</p>
+<p class="text-sm font-bold text-white">Verimlilik %100</p>
+</div>
+</div>
+<div class="absolute bottom-10 -left-10 glass-panel p-4 rounded-xl flex items-center gap-3 animate-float-slow" style="animation-delay: 1.5s;">
+<div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<p class="text-xs text-gray-400 uppercase">Garanti</p>
+<p class="text-sm font-bold text-white">Orijinal Parça</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="py-10 border-y border-white/5 bg-premium-dark/50">
+<div class="container mx-auto px-4 overflow-hidden">
+<p class="text-center text-xs font-bold text-gray-600 uppercase tracking-widest mb-8">Çözüm Ortaklarımız</p>
+<div class="flex justify-center flex-wrap gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+<h3 class="text-xl font-bold text-gray-400">Continental</h3>
+<h3 class="text-xl font-bold text-gray-400">Bosch</h3>
+<h3 class="text-xl font-bold text-gray-400">Sachs</h3>
+<h3 class="text-xl font-bold text-gray-400">Valeo</h3>
+<h3 class="text-xl font-bold text-gray-400">Magneti Marelli</h3>
+</div>
+</div>
+</div>
+<section class="py-32 bg-premium-dark relative" id="services">
+<div class="container mx-auto px-4">
+<div class="text-center max-w-3xl mx-auto mb-20 reveal-scroll">
+<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Premium Servis Hizmetleri</h2>
+<p class="text-gray-400">Aracınızın ihtiyacı olan her şey tek bir çatı altında. En yeni teknolojilerle donatılmış servisimizde A'dan Z'ye bakım.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-card rounded-2xl p-6 group cursor-pointer reveal-scroll">
+<div class="h-48 rounded-xl overflow-hidden mb-6 relative">
+<img alt="Arıza Tespiti" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc4TuP8ZAFqKVNrogzGdnT-aH5OepXIiUZ_tAVJ7XN9pIkARBeGujWm_jDJLJ8x5QjfEglvpQCv9ezi-qFsaBD-oOz3YZkh9tm0CvVJPYyXzNDtUE_jR0ie3e-SFX9TFMTOZ0l14mLeePXbO7Md4rKuM8JXhq8LcIEIJIr9VEDCwcKGbR26CVGwALksM-JTX6pgPV9RusoszOoq050pQfV3SVCLQ4noF6YRx930wL4jZRZIWZ872aCtgJY2N7-GfNP9DFLIxPqA2A2"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute top-4 right-4 bg-premium-accent text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">computer</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-premium-accent transition-colors">Bilgisayarlı Diyagnoz</h3>
+<p class="text-sm text-gray-400 mb-6 leading-relaxed">Nokta atışı arıza tespiti ile gereksiz parça değişiminin önüne geçiyoruz.</p>
+<a class="inline-flex items-center text-sm font-bold text-white group-hover:translate-x-2 transition-transform" href="#">
+                    DETAYLI İNCELE <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+</a>
+</div>
+<div class="glass-card rounded-2xl p-6 group cursor-pointer reveal-scroll" style="animation-delay: 100ms;">
+<div class="h-48 rounded-xl overflow-hidden mb-6 relative">
+<img alt="Motor Mekanik" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApECd3bULIoq0S6B9i0_eySvuXu8zFYeJYT1lMMzzDBqngKgIhcrC2ItVuqo1IM2IV2MgQm1QaWI8hAdw32oOfpeD9FtnHy8EwQyDgVE9ipOqaUrzFYQ_HZqnt7VBOhRn5L_QHBVEeOFI12KIH5MXoPEhUiELsPwys6kCn4suXSQihi0YtVGYy7HaugQi-7ZsDxe_JHoohIK-Mw6jZ5mYmFXdidQHd3XNOT0p0CP4TG6-thQZJolxxciqDuWekRGM83LuDLnv7_Cci"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute top-4 right-4 bg-premium-highlight text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-premium-highlight transition-colors">Motor Yenileme</h3>
+<p class="text-sm text-gray-400 mb-6 leading-relaxed">Motor performansınızı fabrika çıkış değerlerine geri döndürüyoruz.</p>
+<a class="inline-flex items-center text-sm font-bold text-white group-hover:translate-x-2 transition-transform" href="#">
+                    DETAYLI İNCELE <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+</a>
+</div>
+<div class="glass-card rounded-2xl p-6 group cursor-pointer reveal-scroll" style="animation-delay: 200ms;">
+<div class="h-48 rounded-xl overflow-hidden mb-6 relative">
+<img alt="Periyodik Bakım" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL0mJCn1ITcjsNILm8bqeD8Fui74tirWzz1WW4DhdfCFg_buonrdxbTasl_DX4UfC7djNSESiq91PtWOKnrfIIUR62bq-YmomEz9i4alzdurtyyE_aewQWw_0PiHTb07dG3wQvjQiA7SCRM63jJQNSYIYuX9BgBAh2suFfh5sZNH5QQIyH2_MXzuzOsVdQnYpK4eEPBQOZ6Ubur9m7L8fcyNx5KBxJyYMQ5WWmC1-xHQdmWTVkB427zfbCdLBtKBsvM_1waP_966QV"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute top-4 right-4 bg-purple-500 text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">oil_barrel</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">Periyodik Bakım</h3>
+<p class="text-sm text-gray-400 mb-6 leading-relaxed">Aracınızın ömrünü uzatan, garantili ve zamanında bakım hizmeti.</p>
+<a class="inline-flex items-center text-sm font-bold text-white group-hover:translate-x-2 transition-transform" href="#">
+                    DETAYLI İNCELE <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+</a>
+</div>
+<div class="glass-card rounded-2xl p-6 group cursor-pointer reveal-scroll" style="animation-delay: 300ms;">
+<div class="h-48 rounded-xl overflow-hidden mb-6 relative">
+<img alt="Fren Sistemi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO6_igB5EP3mS6XRZP2BSIHaF2E9jZ8QdzexX3U2M7BBxzw0jsNquvVwR-_f5MvJlcpIgJnZhN4HoeF6j4QC17o9BGuMrblu6_7RVO1pc42Sz_fV-V5vrDqeYqEa5ciEFrCi0JNLQtoro0CndtBsDfYSZ1bwOqOAYcUkS-EG6ZV5K4XOw4smdQXCCKpmbyHp76sB6k0gKY69WCTJBlkW2d-ZMRJZhYDCZCTpUPOkUsOcOJqg21AenYC6KEwrI6YNQy7fFMdcW0NRCq"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute top-4 right-4 bg-red-500 text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">speed</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors">Fren Sistemleri</h3>
+<p class="text-sm text-gray-400 mb-6 leading-relaxed">Güvenliğiniz için hayati önem taşıyan fren sistemlerinin detaylı kontrolü.</p>
+<a class="inline-flex items-center text-sm font-bold text-white group-hover:translate-x-2 transition-transform" href="#">
+                    DETAYLI İNCELE <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-40 bg-fixed bg-center bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB49Gn6EVnyKL352WnkQ0cCq-UPcBNK8P58tO0vcgM4wS-3YRo2j5ILtL_F650oOh2xHOFJNQ_GNhZbvPe7fexNTQnm9jNEBaJtKQQKPFI5v8phwTQIqG5ipsl7_gfQ6Li_w44EWLWY0zPRV5Fe6Etz5pF0lm4TQDza_oeHdYkNhsed1fr2tWc1WY9jibnFjg6Nqniay8aoPORc0f_8_GFr60kudIRbeboSCTeocw3tFoUY36RhNaVp8Tr0y2U4xqpyOoLeYylkiWvy');">
+<div class="absolute inset-0 bg-premium-dark/80 backdrop-blur-sm"></div>
+<div class="container mx-auto px-4 relative z-10 text-center">
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight reveal-scroll">Yolda Kalmayın, <br/> <span class="text-premium-accent">Güvende Kalın.</span></h2>
+<p class="text-xl text-gray-300 max-w-2xl mx-auto mb-12 reveal-scroll">Profesyonel ekibimiz ve modern ekipmanlarımızla aracınız emin ellerde. Hemen randevu oluşturun.</p>
+<div class="flex flex-col md:flex-row justify-center gap-6 reveal-scroll">
+<a class="magnetic-wrap glass-panel px-10 py-6 rounded-2xl flex flex-col items-center gap-2 hover:bg-white/10 transition-colors group" href="tel:05421985134">
+<span class="material-symbols-outlined text-4xl text-premium-accent group-hover:scale-110 transition-transform">phone_in_talk</span>
+<span class="text-lg font-bold text-white">0542 198 51 34</span>
+<span class="text-xs text-gray-400">7/24 Destek Hattı</span>
+</a>
+<a class="magnetic-wrap glass-panel px-10 py-6 rounded-2xl flex flex-col items-center gap-2 hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-4xl text-green-500 group-hover:scale-110 transition-transform">chat</span>
+<span class="text-lg font-bold text-white">WhatsApp</span>
+<span class="text-xs text-gray-400">Hızlı Mesaj Gönder</span>
+</a>
+<a class="magnetic-wrap glass-panel px-10 py-6 rounded-2xl flex flex-col items-center gap-2 hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-4xl text-blue-400 group-hover:scale-110 transition-transform">location_on</span>
+<span class="text-lg font-bold text-white">Yol Tarifi Al</span>
+<span class="text-xs text-gray-400">Tuzla Sanayi Sitesi</span>
+</a>
+</div>
+</div>
+</section>
+<footer class="bg-black text-gray-400 border-t border-white/5 pt-20 pb-10">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-3xl text-premium-accent">build_circle</span>
+<span class="text-2xl font-bold text-white uppercase">Klas<span class="text-premium-accent">Oto</span></span>
+</div>
+<p class="text-sm leading-relaxed mb-6">Peugeot ve Citroën araçlarınız için yetkili servis standartlarında, özel servis fiyatlarıyla hizmetinizdeyiz.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-premium-accent hover:text-white transition-all" href="#">
+<span class="font-bold">F</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-premium-accent hover:text-white transition-all" href="#">
+<span class="font-bold">I</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Hızlı Menü</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-premium-accent transition-colors" href="#">Anasayfa</a></li>
+<li><a class="hover:text-premium-accent transition-colors" href="#services">Hizmetlerimiz</a></li>
+<li><a class="hover:text-premium-accent transition-colors" href="#about">Hakkımızda</a></li>
+<li><a class="hover:text-premium-accent transition-colors" href="#contact">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Hizmet Bölgeleri</h4>
+<ul class="space-y-3 text-sm">
+<li>Tuzla Sanayi Sitesi</li>
+<li>Gebze Oto Sanayi</li>
+<li>Pendik Sanayi</li>
+<li>Kartal Sanayi</li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">İletişim</h4>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-premium-accent shrink-0">location_on</span>
+<span>Aydıntepe Mah, Tuzla Sanayi Sitesi, No:123, İstanbul</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-premium-accent shrink-0">call</span>
+<span>0542 198 51 34</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-premium-accent shrink-0">mail</span>
+<span>info@klasoto.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+<p>© 2025 Klas Oto Servis Hizmetleri. Tüm hakları saklıdır.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Gizlilik Politikası</a>
+<a class="hover:text-white" href="#">Kullanım Şartları</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
