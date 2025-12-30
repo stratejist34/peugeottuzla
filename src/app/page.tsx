@@ -83,16 +83,32 @@ const KlasOtoPremium = () => {
             style={{ transformStyle: 'preserve-3d' }}
             className="absolute inset-0 w-full h-full origin-left"
           >
-            <Image
-              src="/images/2022_peugeot_308_7_2560x1440.jpg"
-              alt="Hero Background"
-              fill
-              priority
-              fetchPriority="high"
-              quality={75}
-              sizes="(max-width: 768px) 100vw, 100vw"
-              className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
-            />
+            {/* Desktop Hero Image (Hidden on Mobile) */}
+            <div className="hidden md:block absolute inset-0">
+              <Image
+                src="/images/2022_peugeot_308_7_2560x1440.jpg"
+                alt="Hero Background Desktop"
+                fill
+                priority
+                quality={75}
+                sizes="100vw"
+                className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
+
+            {/* Mobile Hero Image (Visible only on Mobile) */}
+            <div className="md:hidden absolute inset-0">
+              <Image
+                src="/images/hero-mobile.png"
+                alt="Hero Background Mobile"
+                fill
+                priority
+                fetchPriority="high"
+                quality={75}
+                sizes="100vw"
+                className="object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
             {/* Gradients also rotate to keep scene consistent */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#07090f] via-[#07090f]/70 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent" />
