@@ -71,7 +71,7 @@ const Testimonials = () => {
                             </div>
                             <span className="text-white font-black ml-2">4.9/5</span>
                         </div>
-                        <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Google İşletme Puanımız</p>
+                        <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Google İşletme Puanımız</p>
                     </motion.div>
                 </div>
 
@@ -106,11 +106,11 @@ const Testimonials = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <h4 className="font-black text-white text-lg leading-none mb-2">{review.name}</h4>
+                                    <h3 className="font-black text-white text-lg leading-none mb-2">{review.name}</h3>
                                     <div className="flex items-center gap-2">
                                         <span className="text-[10px] text-amber-custom font-black uppercase tracking-widest">{review.role}</span>
                                         <span className="w-1 h-1 bg-gray-700 rounded-full" />
-                                        <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Doğrulanmış Müşteri</span>
+                                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Doğrulanmış Müşteri</span>
                                     </div>
                                 </div>
                             </div>

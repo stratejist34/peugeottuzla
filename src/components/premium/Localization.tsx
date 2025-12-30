@@ -90,7 +90,7 @@ const Localization = () => {
                             {trustSignals.map((signal, i) => (
                                 <div key={i} className="flex flex-col gap-3">
                                     {signal.icon}
-                                    <h5 className="text-white font-bold text-xs uppercase tracking-widest">{signal.title}</h5>
+                                    <h4 className="text-white font-bold text-xs uppercase tracking-widest">{signal.title}</h4>
                                     <p className="text-gray-400 text-[10px] leading-relaxed">{signal.desc}</p>
                                 </div>
                             ))}

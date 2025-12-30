@@ -101,7 +101,7 @@ const TechnicalDNA = () => {
                                     {point.icon}
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-heading text-xs mb-1 tracking-wider">{point.title}</h4>
+                                    <h3 className="text-white font-heading text-xs mb-1 tracking-wider">{point.title}</h3>
                                     <p className="text-gray-500 text-[10px] leading-relaxed font-body">
                                         {point.desc}
                                     </p>

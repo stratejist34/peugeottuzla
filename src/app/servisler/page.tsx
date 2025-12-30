@@ -248,7 +248,7 @@ const ServicesPage = () => {
                                         <div key={i} className="flex gap-4">
                                             <div className="shrink-0">{item.icon}</div>
                                             <div>
-                                                <h5 className="text-white font-heading text-sm mb-1">{item.title}</h5>
+                                                <h4 className="text-white font-heading text-sm mb-1">{item.title}</h4>
                                                 <p className="text-gray-500 text-[11px] leading-relaxed font-body">{item.desc}</p>
                                             </div>
                                         </div>

@@ -66,10 +66,10 @@ const Footer = () => {
                 </div>
 
                 <div className="pt-12 border-t border-white/5 flex flex-col md:row justify-between items-center gap-8">
-                    <p className="text-gray-600 text-xs font-normal tracking-normal">
+                    <p className="text-white/90 text-xs font-normal tracking-normal">
                         © 2025 Klas Oto Peugeot & Citroen Özel Servis. Tüm hakları saklıdır.
                     </p>
-                    <div className="flex gap-8 text-xs font-normal text-gray-500 tracking-normal">
+                    <div className="flex gap-8 text-xs font-normal text-white/80 tracking-normal">
                         <a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a>
                         <a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a>
                     </div>
