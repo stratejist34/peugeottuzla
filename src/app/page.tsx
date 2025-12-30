@@ -87,7 +87,7 @@ const KlasOtoPremium = () => {
               {/* Mobile Image (< 768px) - High Priority */}
               <source
                 media="(max-width: 768px)"
-                srcSet="/images/hero-mobile.png"
+                srcSet="/images/hero-mobile.webp"
               />
               {/* Desktop Image (>= 769px) */}
               <source
