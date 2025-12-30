@@ -131,7 +131,7 @@ const ContactPage = () => {
                                         Canlı Konum İzleme
                                     </div>
                                     <a
-                                        href="https://maps.app.goo.gl/da4a34066adfe388"
+                                        href="https://maps.app.goo.gl/bze2NgSC2xgxw5LL9"
                                         target="_blank"
                                         onClick={() => handleContactClick('konum_yol_tarifi', 'google_maps')}
                                         className="bg-white text-black px-6 py-3 rounded-full font-bold text-[10px] uppercase tracking-widest shadow-2xl hover:bg-cyan-500 hover:text-white transition-all pointer-events-auto"
