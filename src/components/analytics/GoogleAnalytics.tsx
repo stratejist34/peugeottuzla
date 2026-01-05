@@ -21,6 +21,7 @@ const GoogleAnalytics = ({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) =
                 gtag('config', '${GA_MEASUREMENT_ID}', {
                     page_path: window.location.pathname,
                 });
+                gtag('config', 'AW-17432793907');
                 `,
                 }}
             />

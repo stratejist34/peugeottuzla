@@ -178,7 +178,6 @@ const ServiceDeck = () => {
                         viewport={{ once: true }}
                         onClick={() => {
                             setActiveService(service);
-                            trackEvent(`anasayfa_hizmet_tiklamasi_${service.id}`);
                         }}
                         style={{ willChange: 'transform' }} // GPU Acceleration hint
                         className={`

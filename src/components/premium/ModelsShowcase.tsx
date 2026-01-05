@@ -5,6 +5,7 @@ import { ChevronRight, ArrowRight, Gauge, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import wpContent from '@/data/wp_content.json';
+import { trackEvent } from '@/lib/gtag';
 
 const brands = [
     { id: 'peugeot', name: 'Peugeot' },
@@ -147,12 +148,13 @@ const ModelsShowcase = () => {
                                         {currentModels[activeModel].name} <span className="text-amber-custom">Uzmanlığı.</span>
                                     </h3>
 
-                                    <Link
-                                        href="/servisler"
+                                    <a
+                                        href="tel:05421985134"
+                                        onClick={() => trackEvent('anasayfa_model_randevu_tiklamasi', { model_name: currentModels[activeModel].name })}
                                         className="inline-flex items-center gap-3 px-8 py-4 bg-amber-custom text-black font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black transition-all"
                                     >
                                         RANDEVU OLUŞTUR <ArrowRight size={16} />
-                                    </Link>
+                                    </a>
                                 </div>
                             </motion.div>
                         </AnimatePresence>
