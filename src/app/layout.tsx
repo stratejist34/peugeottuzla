@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from '@/components/premium/SmoothScroll';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 const archivoBlack = Archivo_Black({
@@ -67,13 +66,12 @@ export default function RootLayout({
         className={`${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} antialiased bg-[#050505] text-white`}
       >
         <GoogleAnalytics gaId="G-V329GE6W72" />
-        <SmoothScroll>
-          <Navbar />
-          <Schema />
-          {children}
-          <Footer />
-          <MobileActionBar />
-        </SmoothScroll>
+        {/* SmoothScroll temporarily disabled for performance */}
+        <Navbar />
+        <Schema />
+        {children}
+        <Footer />
+        <MobileActionBar />
       </body>
     </html>
   );

@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import gsap from 'gsap';
 import { Phone, MessageCircle, MapPin, ChevronRight, Star, Wrench, ShieldCheck, Clock, CheckCircle2, Car, ArrowRight, MousePointer2, Settings } from 'lucide-react';
 import MagneticButton from '@/components/premium/MagneticButton';
 import TextReveal from '@/components/premium/TextReveal';
@@ -28,41 +27,9 @@ import DiagnosticXray from '@/components/premium/DiagnosticXray';
 import { trackEvent } from '@/lib/gtag';
 
 const KlasOtoPremium = () => {
-  const orbitContainerRef = useRef<HTMLDivElement>(null);
-  const orbitRef = useRef<HTMLDivElement>(null);
   const [isPriceFormOpen, setIsPriceFormOpen] = useState(false);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const duration = 30;
-
-      // 1. Orbit Rotation (Removed - replaced by DiagnosticXray components internals)
-      /* 
-      const orbitAnim = gsap.to(orbitRef.current, {
-        rotation: 360,
-        duration: duration,
-        repeat: -1,
-        ease: "none",
-      });
-      */
-
-      // 3. Hover Interaction
-      const wrapper = orbitContainerRef.current;
-      if (wrapper) {
-        const onEnter = () => {
-          // gsap.to(orbitAnim, { timeScale: 0.05, duration: 1 });
-        };
-        const onLeave = () => {
-          // gsap.to(orbitAnim, { timeScale: 1, duration: 1 });
-        };
-
-        wrapper.addEventListener('mouseenter', onEnter);
-        wrapper.addEventListener('mouseleave', onLeave);
-      }
-    }, orbitContainerRef);
-
-    return () => ctx.revert();
-  }, []);
+  // Removed GSAP animations for performance
 
   return (
     <div className="min-h-screen bg-[#07090f] text-white font-sans selection:bg-amber-500 selection:text-black overflow-x-hidden">
@@ -72,17 +39,9 @@ const KlasOtoPremium = () => {
       <header className="relative min-h-[95vh] flex items-center pt-0 overflow-hidden">
         {/* Animated Background Elements */}
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 z-0 perspective-[2000px]">
-          <motion.div
-            initial={{ scale: 1.1, rotateY: -10 }}
-            animate={{ scale: 1, rotateY: 0 }}
-            transition={{
-              duration: 1.5,
-              ease: [0.22, 1, 0.36, 1]
-            }}
-            style={{ transformStyle: 'preserve-3d' }}
-            className="absolute inset-0 w-full h-full origin-left"
-          >
+        <div className="absolute inset-0 z-0">
+          {/* Removed framer-motion wrapper for performance */}
+          <div className="absolute inset-0 w-full h-full">
             {/* Next.js Optimized Hero Images */}
             {/* Mobile Image (< 768px) */}
             <div className="block md:hidden absolute inset-0 w-full h-full">
@@ -92,9 +51,10 @@ const KlasOtoPremium = () => {
                 fill
                 priority
                 fetchPriority="high"
-                className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
+                className="object-cover opacity-40"
                 sizes="100vw"
-                quality={65}
+                quality={50}
+                loading="eager"
               />
             </div>
 
@@ -106,16 +66,17 @@ const KlasOtoPremium = () => {
                 fill
                 priority
                 fetchPriority="high"
-                className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
+                className="object-cover opacity-40"
                 sizes="100vw"
-                quality={65}
+                quality={50}
+                loading="eager"
               />
             </div>
 
             {/* Gradients */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#07090f] via-[#07090f]/70 to-transparent z-10" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent z-10" />
-          </motion.div>
+          </div>
 
           {/* Top Right Navy Glow - Kept separate/floating */}
           <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-blue-600/10 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/4 animate-pulse-slow pointer-events-none" />
@@ -239,7 +200,7 @@ const KlasOtoPremium = () => {
             </div>
 
             {/* Right Column: Diagnostic System */}
-            <div className="hidden lg:flex flex-1 flex-col items-center justify-center relative mt-0 lg:mt-0" ref={orbitContainerRef}>
+            <div className="hidden lg:flex flex-1 flex-col items-center justify-center relative mt-0 lg:mt-0">
               <DiagnosticXray />
             </div>
 
