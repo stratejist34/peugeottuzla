@@ -10,7 +10,9 @@ import GlassCard from '@/components/premium/GlassCard';
 import CorporateIdentity from '@/components/premium/CorporateIdentity';
 import SafetyCTA from '@/components/premium/SafetyCTA';
 import Partners from '@/components/premium/Partners';
+import PartnersCarousel from '@/components/premium/PartnersCarousel';
 import ModelsShowcase from '@/components/premium/ModelsShowcase';
+import ModelsShowcaseMobile from '@/components/premium/ModelsShowcaseMobile';
 import Testimonials from '@/components/premium/Testimonials';
 import ScrollingText from '@/components/premium/ScrollingText';
 import DiagnosticWindow from '@/components/premium/DiagnosticWindow';
@@ -222,21 +224,37 @@ const KlasOtoPremium = () => {
         </div>
       </header >
 
-      {/* --- STATS SECTION --- */}
-      <StatsSection />
+      {/* --- STATS SECTION --- Desktop only for performance */}
+      <div className="hidden md:block">
+        <StatsSection />
+      </div>
 
       {/* --- CORPORATE IDENTITY --- */}
       <div id="hakkımızda">
         <CorporateIdentity />
       </div>
 
-      {/* --- MODELS SHOWCASE --- */}
-      < div id="modeller" >
-        <ModelsShowcase />
-      </div >
+      {/* --- MODELS SHOWCASE --- Separate mobile/desktop */}
+      <div id="modeller">
+        {/* Mobile: Simplified 6-model grid */}
+        <div className="block md:hidden">
+          <ModelsShowcaseMobile />
+        </div>
+        {/* Desktop: Full showcase with tabs */}
+        <div className="hidden md:block">
+          <ModelsShowcase />
+        </div>
+      </div>
 
-      {/* --- PARTNERS MARQUEE --- */}
-      < Partners />
+      {/* --- PARTNERS --- Separate mobile/desktop */}
+      {/* Mobile: 4-item static carousel */}
+      <div className="block md:hidden">
+        <PartnersCarousel />
+      </div>
+      {/* Desktop: Full marquee */}
+      <div className="hidden md:block">
+        <Partners />
+      </div>
 
       {/* --- SERVICES GRID --- */}
       < section id="hizmetler" className="py-32 px-6 relative bg-gradient-to-b from-[#07090f] to-[#0c0e16]" >
