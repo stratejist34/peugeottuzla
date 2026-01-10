@@ -53,8 +53,7 @@ const KlasOtoPremium = () => {
                 fetchPriority="high"
                 className="object-cover opacity-40"
                 sizes="100vw"
-                quality={50}
-                loading="eager"
+                quality={75}
               />
             </div>
 
@@ -68,8 +67,7 @@ const KlasOtoPremium = () => {
                 fetchPriority="high"
                 className="object-cover opacity-40"
                 sizes="100vw"
-                quality={50}
-                loading="eager"
+                quality={75}
               />
             </div>
 
