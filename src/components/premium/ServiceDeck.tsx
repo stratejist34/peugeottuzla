@@ -130,7 +130,7 @@ const services: ServiceItem[] = [
         title: 'Yol Yardım',
         description: '7/24 Acil çekici ve destek.',
         icon: <Car size={24} />,
-        image: '/images/Citroen-cekici-Citroen-acil-servis-yol-yardim-Tuzla-Citroen-cekici-Gebze-Citroen-yardim-Pendik.jpg',
+        image: '/images/yol-yardim.jpg',
         diagnosticData: {
             systemStatus: "SOS_SIGNAL",
             systemColor: "amber",
