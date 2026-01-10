@@ -125,7 +125,7 @@ const CorporateIdentity = () => {
                                 alt="Modern Servis Alanı"
                                 fill
                                 className="object-cover saturate-[0.8] transition-all duration-700 group-hover:saturate-100 group-hover:scale-105"
-                                sizes="(max-width: 768px) 100vw, 60vw"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 priority
                             />
 

@@ -252,6 +252,7 @@ const ServiceDeck = () => {
                             alt={activeService.title}
                             fill
                             className="object-cover opacity-60"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         {/* Lighter Gradients */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-transparent to-transparent opacity-80" />

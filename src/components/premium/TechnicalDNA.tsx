@@ -71,6 +71,7 @@ const TechnicalDNA = () => {
                                 src="/images/Klas-Oto-Peugeot-Servis.jpg"
                                 alt="Technical Core"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover rounded-full grayscale opacity-40 group-hover:opacity-60 transition-opacity duration-1000"
                             />
                             <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay rounded-full" />

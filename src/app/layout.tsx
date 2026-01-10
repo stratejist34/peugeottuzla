@@ -3,8 +3,6 @@ import { Archivo_Black, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
 
-
-
 const archivoBlack = Archivo_Black({
   weight: '400',
   subsets: ['latin'],
