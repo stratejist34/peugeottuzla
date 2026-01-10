@@ -2,16 +2,19 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/avif', 'image/webp'], // AVIF first for better compression
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 year for better caching
   },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production', // Remove console logs in production
+  },
   experimental: {
-    optimizeCss: false,
+    optimizeCss: true, // Enable CSS optimization
   },
 
   async redirects() {

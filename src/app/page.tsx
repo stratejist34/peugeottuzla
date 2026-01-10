@@ -91,9 +91,10 @@ const KlasOtoPremium = () => {
                 alt="Peugeot Servis Tuzla Mobil Hero"
                 fill
                 priority
+                fetchPriority="high"
                 className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
                 sizes="100vw"
-                quality={80}
+                quality={65}
               />
             </div>
 
@@ -104,9 +105,10 @@ const KlasOtoPremium = () => {
                 alt="Peugeot 308 Hero Background"
                 fill
                 priority
+                fetchPriority="high"
                 className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
                 sizes="100vw"
-                quality={90}
+                quality={65}
               />
             </div>
 

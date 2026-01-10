@@ -9,20 +9,21 @@ const archivoBlack = Archivo_Black({
   subsets: ['latin'],
   variable: '--font-archivo-black',
   display: 'swap',
+  preload: true, // Preload critical hero font
 });
 
 const outfit = Outfit({
   weight: ['400', '600', '800'],
   subsets: ['latin'],
   variable: '--font-outfit',
-  display: 'swap',
+  display: 'optional', // Non-critical, use optional to prevent blocking
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   variable: '--font-plus-jakarta-sans',
-  display: 'swap',
+  display: 'optional', // Non-critical, use optional to prevent blocking
 });
 
 export const metadata: Metadata = {
@@ -49,6 +50,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
+      <head>
+        {/* Preconnect to Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload critical custom fonts */}
+        <link
+          rel="preload"
+          href="/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} antialiased bg-[#050505] text-white`}
       >
