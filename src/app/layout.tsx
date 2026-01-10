@@ -27,8 +27,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://peugeottuzla.com'),
   title: "Klas Oto | Peugeot & Citroen Özel Servisi Tuzla",
   description: "Tuzla'da profesyonel Peugeot ve Citroen özel servisi. Orijinal parça garantisi ve hızlı çözüm.",
+  alternates: {
+    canonical: '/',
+  },
   verification: {
     google: "WyhAS5JfhhBBu_D_JJ-8JIMOjwHckFZHYGYpCq6xbPo",
   },

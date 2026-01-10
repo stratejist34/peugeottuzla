@@ -21,9 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: item.meta_title || `${item.title} | Klas Oto Peugeot Servisi`,
         description: item.meta_desc,
         keywords: item.meta_focuskw,
+        alternates: {
+            canonical: `/${slug}`,
+        },
         openGraph: {
             title: item.title,
             description: item.meta_desc,
+            url: `https://peugeottuzla.com/${slug}`,
             images: item.thumbnail ? [item.thumbnail] : [],
         },
     };
