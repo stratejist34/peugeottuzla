@@ -14,8 +14,7 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console logs in production
   },
   experimental: {
-    optimizeCss: true, // Enable CSS optimization
-    scrollRestoration: true,
+    optimizeCss: true,
   },
 
   async redirects() {

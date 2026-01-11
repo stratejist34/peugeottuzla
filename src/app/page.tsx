@@ -96,7 +96,7 @@ const KlasOtoPremium = () => {
               <h1 className="text-4xl md:text-7xl lg:text-8xl font-display tracking-tighter leading-[0.95] mb-8 py-2 uppercase max-w-[78vw]">
                 <span className="block text-gray-500 overflow-hidden">
                   <motion.span
-                    initial={isMounted && isDesktop ? { y: "100%" } : { y: 0 }}
+                    initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="block font-manifold text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
@@ -104,9 +104,9 @@ const KlasOtoPremium = () => {
                     KUSURSUZ
                   </motion.span>
                 </span>
-                <span className="block text-white">
+                <span className="block text-white overflow-hidden">
                   <motion.span
-                    initial={isMounted && isDesktop ? { y: "100%" } : { y: 0 }}
+                    initial={isMounted ? { y: "100%" } : { y: 0 }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     className="text-premium-gradient tracking-[-0.015em] py-1 block"
