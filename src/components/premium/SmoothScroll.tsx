@@ -6,8 +6,15 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect mobile on mount
-    setIsMobile(window.innerWidth < 768);
+    // Detect mobile and track resize
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile((prev) => (prev !== mobile ? mobile : prev));
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Disable SmoothScroll on mobile for performance (eliminates forced reflows)
@@ -24,6 +31,7 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
       wheelMultiplier: 0.8, // Less aggressive
       infinite: false,
     }}>
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {children as any}
     </ReactLenis>
   );

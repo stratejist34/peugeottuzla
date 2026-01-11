@@ -13,27 +13,37 @@ const TableOfContents = ({ content }: TOCProps) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        setIsMounted(true);
+        const frame = requestAnimationFrame(() => {
+            setIsMounted(true);
+        });
+        return () => cancelAnimationFrame(frame);
     }, []);
 
     useEffect(() => {
         if (!isMounted || typeof window === 'undefined') return;
 
         // Parse headings from the HTML string
-        try {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(content, 'text/html');
-            const headingElements = doc.querySelectorAll('h2, h3');
+        const parseHeadings = () => {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(content, 'text/html');
+                const headingElements = doc.querySelectorAll('h2, h3');
 
-            const parsedHeadings = Array.from(headingElements).map((el, index) => {
-                const text = el.textContent || '';
-                return { id: `heading-${index}`, text, level: parseInt(el.tagName[1]) };
-            });
+                const parsedHeadings = Array.from(headingElements).map((el, index) => {
+                    const text = el.textContent || '';
+                    return { id: `heading-${index}`, text, level: parseInt(el.tagName[1]) };
+                });
 
-            setHeadings(parsedHeadings);
-        } catch (e) {
-            console.error('TOC Parse Error:', e);
-        }
+                setHeadings((prev) => {
+                    if (JSON.stringify(prev) === JSON.stringify(parsedHeadings)) return prev;
+                    return parsedHeadings;
+                });
+            } catch (e) {
+                console.error('TOC Parse Error:', e);
+            }
+        };
+
+        parseHeadings();
     }, [content, isMounted]);
 
     useEffect(() => {

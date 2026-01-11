@@ -49,7 +49,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
                     alt={title}
                     fill
                     className="object-cover"
-                    ref={imageRef as any}
+                    ref={imageRef as unknown as React.RefObject<HTMLImageElement | null>}
                     style={{ height: '120%', marginTop: '-10%' }}
                 />
                 <div className="absolute inset-0 bg-black/40" />

@@ -68,11 +68,11 @@ const AboutPage = () => {
                                 <span className="text-gray-500">Tutkusuyla Kurulduk.</span>
                             </h2>
                             <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                                2005 yılında Tuzla'da temelleri atılan Klas Oto, otomotiv sektöründeki derin tecrübesini Peugeot ve Citroen markalarına olan uzmanlığıyla birleştirdi.
+                                2005 yılında Tuzla&apos;da temelleri atılan Klas Oto, otomotiv sektöründeki derin tecrübesini Peugeot ve Citroen markalarına olan uzmanlığıyla birleştirdi.
                                 Kurulduğumuz günden bu yana, sadece araç tamiri değil, sürüş güvenliği ve kullanıcı memnuniyeti odaklı bir vizyonla hareket ediyoruz.
                             </p>
                             <p className="text-gray-400 text-lg leading-relaxed mb-12">
-                                Bugün Tuzla Sanayi Sitesi'ndeki modern servisimizde, en son teknoloji diyagnoz cihazları ve uzman usta kadromuzla,
+                                Bugün Tuzla Sanayi Sitesi&apos;ndeki modern servisimizde, en son teknoloji diyagnoz cihazları ve uzman usta kadromuzla,
                                 yetkili servis kalitesini ulaşılabilir fiyatlarla sunuyoruz.
                             </p>
 
@@ -162,7 +162,7 @@ const AboutPage = () => {
                             >
                                 {value.icon}
                                 <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-wider">{value.title}</h3>
-                                <p className="text-gray-500 font-medium leading-relaxed italic">"{value.desc}"</p>
+                                <p className="text-gray-500 font-medium leading-relaxed italic">&quot;{value.desc}&quot;</p>
                             </motion.div>
                         ))}
                     </div>

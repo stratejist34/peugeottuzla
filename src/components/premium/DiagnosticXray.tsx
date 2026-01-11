@@ -27,8 +27,8 @@ const DiagnosticXray = () => {
         }
 
         // Floating diagnostic panels animation
-        const panels = gsap.utils.toArray('.diag-panel');
-        panels.forEach((panel: any, i) => {
+        const panels = gsap.utils.toArray<HTMLElement>('.diag-panel');
+        panels.forEach((panel, i) => {
             gsap.to(panel, {
                 y: '+=15',
                 duration: 2 + i,

@@ -50,7 +50,7 @@ const CorporateIdentity = () => {
                         >
                             <h3 className="text-2xl font-bold text-white mb-4">Peugeot & Citroën Uzmanlığı</h3>
                             <p className="text-gray-400 leading-relaxed text-sm md:text-base">
-                                Klas Oto, sadece parça değiştiren bir servis değil; aracınızın DNA'sını analiz eden bir teknoloji merkezidir. 20 yılı aşkın süredir Tuzla'da, yetkili servis standartlarını butik hizmet anlayışıyla birleştiriyoruz.
+                                Klas Oto, sadece parça değiştiren bir servis değil; aracınızın DNA&apos;sını analiz eden bir teknoloji merkezidir. 20 yılı aşkın süredir Tuzla&apos;da, yetkili servis standartlarını butik hizmet anlayışıyla birleştiriyoruz.
                             </p>
                         </motion.div>
 

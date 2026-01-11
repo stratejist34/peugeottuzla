@@ -95,7 +95,7 @@ const Testimonials = () => {
                             </div>
 
                             <p className="text-gray-400 text-lg leading-relaxed mb-10 group-hover:text-gray-200 transition-colors">
-                                "{review.text}"
+                                &quot;{review.text}&quot;
                             </p>
 
                             <div className="flex items-center gap-5">

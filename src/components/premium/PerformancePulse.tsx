@@ -22,6 +22,26 @@ const PerformancePulse = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [mouseX, mouseY]);
 
+    const [particles, setParticles] = useState<{ id: number; left: string; top: string; duration: number; delay: number }[]>([]);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        const frame = requestAnimationFrame(() => {
+            setIsMounted(true);
+            const newParticles = [...Array(20)].map((_, i) => ({
+                id: i,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                duration: 2 + Math.random() * 2,
+                delay: Math.random() * 2
+            }));
+            setParticles(newParticles);
+        });
+        return () => cancelAnimationFrame(frame);
+    }, []);
+
+    if (!isMounted) return null;
+
     return (
         <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
             {/* Background Radial Gradient */}
@@ -93,22 +113,22 @@ const PerformancePulse = () => {
 
             {/* Particles/Digital Dust */}
             <div className="absolute inset-0 pointer-events-none">
-                {[...Array(20)].map((_, i) => (
+                {particles.map((p) => (
                     <motion.div
-                        key={i}
+                        key={p.id}
                         initial={{ opacity: 0 }}
                         animate={{
                             opacity: [0, 0.5, 0],
                             y: [0, -100]
                         }}
                         transition={{
-                            duration: 2 + Math.random() * 2,
+                            duration: p.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2
+                            delay: p.delay
                         }}
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`
+                            left: p.left,
+                            top: p.top
                         }}
                         className="absolute w-1 h-1 bg-amber-custom/30 rounded-full"
                     />
