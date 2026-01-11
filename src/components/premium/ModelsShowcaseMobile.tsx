@@ -63,7 +63,7 @@ const ModelsShowcaseMobile = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-2 gap-3">
-                    {popularModels.map((model) => (
+                    {popularModels.map((model, index) => (
                         <div
                             key={model.id}
                             className="bg-neutral-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-amber-custom/30 transition-all"

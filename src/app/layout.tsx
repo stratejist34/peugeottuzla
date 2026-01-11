@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Archivo_Black, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 
 const archivoBlack = Archivo_Black({
   weight: '400',
@@ -54,7 +54,8 @@ export default function RootLayout({
         {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Preload critical custom fonts */}
+
+        {/* Preload CRITICAL fonts only */}
         <link
           rel="preload"
           href="/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2"
@@ -62,11 +63,31 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/fonts/peugeot-new/PeugeotNewBold.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} antialiased bg-[#050505] text-white`}
       >
-        <GoogleAnalytics gaId="G-V329GE6W72" />
+        {/* Google Analytics - DEFERRED for performance */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-V329GE6W72"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-V329GE6W72');
+          `}
+        </Script>
+
         <SmoothScroll>
           <Navbar />
           <Schema />
