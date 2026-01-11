@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizeCss: true, // Enable CSS optimization
+    scrollRestoration: true,
   },
 
   async redirects() {

@@ -12,6 +12,9 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '
     const magnetic = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        // Disable magnetic effect on mobile for performance
+        if (window.innerWidth < 768) return;
+
         const currentRef = magnetic.current;
         if (!currentRef) return;
 

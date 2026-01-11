@@ -126,6 +126,7 @@ const CorporateIdentity = () => {
                                 fill
                                 className="object-cover saturate-[0.8] transition-all duration-700 group-hover:saturate-100 group-hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 58vw, 750px"
+                                quality={60}
                             />
 
                             {/* Overlay Gradient */}

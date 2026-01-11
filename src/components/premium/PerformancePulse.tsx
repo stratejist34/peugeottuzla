@@ -62,14 +62,14 @@ const PerformancePulse = () => {
                         delay: i * 1,
                         ease: "easeOut"
                     }}
-                    className="absolute w-[300px] h-[300px] border border-amber-custom/20 rounded-full pointer-events-none"
+                    className="absolute w-[300px] h-[300px] border border-amber-custom/20 rounded-full pointer-events-none will-change-transform"
                 />
             ))}
 
             {/* Parallax Container */}
             <motion.div
                 style={{ x: springX, y: springY }}
-                className="relative z-10"
+                className="relative z-10 will-change-transform"
             >
                 {/* Center Peugeot Logo */}
                 <div className="relative w-40 h-40 md:w-56 md:h-56 p-8 bg-black/40 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_0_100px_rgba(255,179,0,0.15)] flex items-center justify-center group">

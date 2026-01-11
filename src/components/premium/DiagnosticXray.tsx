@@ -56,7 +56,7 @@ const DiagnosticXray = () => {
                 {/* Animated Scan Line */}
                 <div
                     ref={scanLineRef}
-                    className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent shadow-[0_0_20px_rgba(6,182,212,0.8)] z-10"
+                    className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent shadow-[0_0_20px_rgba(6,182,212,0.8)] z-10 will-change-[top]"
                 />
 
                 {/* Overlay Vignette */}
@@ -67,7 +67,7 @@ const DiagnosticXray = () => {
             {diagnosticData.map((data, idx) => (
                 <div
                     key={idx}
-                    className={`diag-panel absolute w-32 md:w-40 p-3 rounded-xl bg-black/40 border border-white/5 backdrop-blur-md z-20 shadow-2xl ${idx === 0 ? '-top-4 -left-4' :
+                    className={`diag-panel absolute w-32 md:w-40 p-3 rounded-xl bg-black/40 border border-white/5 backdrop-blur-md z-20 shadow-2xl will-change-transform ${idx === 0 ? '-top-4 -left-4' :
                         idx === 1 ? '-top-4 -right-4' :
                             idx === 2 ? '-bottom-4 -left-4' :
                                 '-bottom-4 -right-4'
