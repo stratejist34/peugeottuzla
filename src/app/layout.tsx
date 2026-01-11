@@ -8,17 +8,17 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 const peugeotNew = localFont({
   src: [
     {
-      path: './fonts/peugeot-new/PeugeotNewRegular.otf',
+      path: './fonts/peugeotnew/PeugeotNewRegular.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/peugeot-new/PeugeotNewBold.otf',
+      path: './fonts/peugeotnew/PeugeotNewBold.otf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: './fonts/peugeot-new/PeugeotNewBlack.otf',
+      path: './fonts/peugeotnew/PeugeotNewBlack.otf',
       weight: '900',
       style: 'normal',
     },
@@ -30,12 +30,12 @@ const peugeotNew = localFont({
 const manifoldExtended = localFont({
   src: [
     {
-      path: './fonts/manifold-extended/ManifoldExtendedCF-Medium.woff2',
+      path: './fonts/manifoldextended/ManifoldExtendedCF-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: './fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2',
+      path: './fonts/manifoldextended/ManifoldExtendedCF-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
@@ -45,13 +45,25 @@ const manifoldExtended = localFont({
 });
 
 const digital7 = localFont({
-  src: './fonts/digital_7/digital-7.ttf',
+  src: [
+    {
+      path: './fonts/digital7/digital7.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
   variable: '--font-digital',
-  display: 'optional',
+  display: 'swap',
 });
 
 const dsDigital = localFont({
-  src: './fonts/ds-digital/DS-DIGI.TTF',
+  src: [
+    {
+      path: './fonts/dsdigital/dsdigi.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
   variable: '--font-ds-digital',
   display: 'swap',
 });
