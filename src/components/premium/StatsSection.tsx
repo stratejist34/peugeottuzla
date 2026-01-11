@@ -87,7 +87,7 @@ const StatsSection = () => {
                             className="group relative"
                         >
                             {/* Large Background Outlined Text - Localized & Visible */}
-                            <div className="absolute -top-10 left-6 text-6xl font-outfit font-black text-white/[0.1] select-none tracking-tighter transition-all duration-700 group-hover:text-amber-custom/20 group-hover:-translate-y-4">
+                            <div className="absolute -top-10 left-6 text-6xl font-manifold font-black text-white/[0.1] select-none tracking-tighter transition-all duration-700 group-hover:text-amber-custom/20 group-hover:-translate-y-4">
                                 {stat.bgText}
                             </div>
 

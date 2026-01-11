@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Archivo_Black, Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -68,20 +68,6 @@ const dsDigital = localFont({
   display: 'swap',
 });
 
-const archivoBlack = Archivo_Black({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-archivo-black',
-  display: 'swap',
-});
-
-const outfit = Outfit({
-  weight: ['400', '600', '800'],
-  subsets: ['latin'],
-  variable: '--font-outfit',
-  display: 'optional',
-});
-
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
@@ -112,7 +98,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${peugeotNew.variable} ${manifoldExtended.variable} ${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} ${digital7.variable} ${dsDigital.variable}`}>
+    <html lang="tr" className={`${peugeotNew.variable} ${manifoldExtended.variable} ${plusJakartaSans.variable} ${digital7.variable} ${dsDigital.variable}`}>
       <body
         className="antialiased bg-[#050505] text-white"
       >

@@ -139,7 +139,7 @@
 
   /* Subheading - For H3 and card titles */
   .font-subheading {
-    font-family: var(--font-outfit);
+    font-family: 'Peugeot New', sans-serif;
     font-weight: 600;
     @apply tracking-normal;
   }
@@ -163,15 +163,6 @@
     font-family: var(--font-plus-jakarta-sans);
     font-weight: 500;
     @apply tracking-wide uppercase;
-  }
-
-  /* Direct font utilities */
-  .font-archivo-black {
-    font-family: var(--font-archivo-black);
-  }
-
-  .font-outfit {
-    font-family: var(--font-outfit);
   }
 
   .font-plus-jakarta-sans {
