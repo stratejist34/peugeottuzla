@@ -260,7 +260,7 @@ const ServiceDeck = () => {
                 </AnimatePresence>
 
                 {/* Grid Overlay */}
-                <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10 pointer-events-none z-10" />
+                <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none z-10" />
 
                 {/* HUD Positioned in the Deck - More Distant/Visible */}
                 <div className="absolute top-8 right-8 z-30 transform scale-[1.35] origin-top-right drop-shadow-2xl">

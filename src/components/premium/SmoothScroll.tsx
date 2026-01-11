@@ -3,9 +3,11 @@ import { ReactLenis } from '@studio-freight/react-lenis';
 import { useEffect, useState } from 'react';
 
 function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Detect mobile and track resize
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
@@ -17,17 +19,21 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Render children directly on the server or before client-side mount
+  if (!mounted) {
+    return <>{children}</>;
+  }
+
   // No-op for mobile hydration to avoid full tree re-render
   return (
     <ReactLenis
       root
       options={{
-        lerp: 0.05,
-        duration: 0.8,
-        smoothWheel: !isMobile,
-        syncTouch: false,
-        touchMultiplier: 1.5,
-        wheelMultiplier: isMobile ? 0 : 0.8,
+        duration: 1.2, // Updated duration
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Updated easing
+        smoothWheel: true, // Updated smoothWheel
+        wheelMultiplier: 1, // Updated wheelMultiplier
+        touchMultiplier: 2, // Updated touchMultiplier
         infinite: false,
       }}
     >

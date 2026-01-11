@@ -30,7 +30,7 @@ const AnimatedCounter = ({ value, duration = 2 }: { value: string, duration?: nu
     });
 
     return (
-        <motion.span ref={ref} className="font-outfit font-bold tracking-tight inline-block min-w-[1.2ch]">
+        <motion.span ref={ref} className="font-manifold font-bold tracking-tight inline-block min-w-[1.2ch]">
             {display}
         </motion.span>
     );

@@ -1,6 +1,6 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface MagneticButtonProps {
     children: React.ReactNode;
@@ -9,45 +9,57 @@ interface MagneticButtonProps {
 }
 
 const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '', onClick }) => {
-    const magnetic = useRef<HTMLDivElement>(null);
+    const magneticRef = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
+    const [rect, setRect] = useState<DOMRect | null>(null);
 
     useEffect(() => {
-        // Disable magnetic effect on mobile for performance
-        if (window.innerWidth < 768) return;
-
-        const currentRef = magnetic.current;
-        if (!currentRef) return;
-
-        const xTo = gsap.quickTo(currentRef, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-        const yTo = gsap.quickTo(currentRef, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
-
-        const mouseMove = (e: MouseEvent) => {
-            const { clientX, clientY } = e;
-            const { height, width, left, top } = currentRef.getBoundingClientRect();
-            const x = clientX - (left + width / 2);
-            const y = clientY - (top + height / 2);
-            xTo(x * 0.35);
-            yTo(y * 0.35);
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
         };
-
-        const mouseLeave = () => {
-            xTo(0);
-            yTo(0);
-        };
-
-        currentRef.addEventListener("mousemove", mouseMove);
-        currentRef.addEventListener("mouseleave", mouseLeave);
-
-        return () => {
-            currentRef.removeEventListener("mousemove", mouseMove);
-            currentRef.removeEventListener("mouseleave", mouseLeave);
-        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (isMobile || !rect) return;
+
+        const { clientX, clientY } = e;
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const x = clientX - centerX;
+        const y = clientY - centerY;
+
+        setPosition({ x: x * 0.4, y: y * 0.4 });
+    };
+
+    const handleMouseEnter = () => {
+        if (!isMobile && magneticRef.current) {
+            setRect(magneticRef.current.getBoundingClientRect());
+        }
+    };
+
+    const handleMouseLeave = () => {
+        setPosition({ x: 0, y: 0 });
+        setRect(null);
+    };
+
     return (
-        <div ref={magnetic} className={`cursor-pointer ${className}`} onClick={onClick}>
+        <motion.div
+            ref={magneticRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            animate={{ x: position.x, y: position.y }}
+            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            className={`inline-block cursor-pointer ${className}`}
+            onClick={onClick}
+        >
             {children}
-        </div>
+        </motion.div>
     );
 };
 
