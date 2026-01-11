@@ -116,7 +116,7 @@ const TopTicker = () => {
                 {!isAnimating && (
                     <motion.div
                         key={groupIndex}
-                        initial={{ x: "100%", opacity: 0 }}
+                        initial={false}
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: "-100%", opacity: 0 }}
                         transition={{ type: "spring", damping: 25, stiffness: 120 }}

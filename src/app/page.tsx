@@ -88,7 +88,7 @@ const KlasOtoPremium = () => {
               <h1 className="text-4xl md:text-7xl lg:text-8xl font-display tracking-tighter leading-[0.95] mb-8 py-2 uppercase max-w-[78vw]">
                 <span className="block text-gray-500 overflow-hidden">
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={false}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="block font-manifold text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
@@ -98,7 +98,7 @@ const KlasOtoPremium = () => {
                 </span>
                 <span className="block text-white">
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={false}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     className="text-premium-gradient tracking-[-0.015em] py-1 block"
@@ -107,31 +107,20 @@ const KlasOtoPremium = () => {
                   </motion.span>
                 </span>
               </h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+              <p
                 className="font-body text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-8 border-l-4 border-amber-custom pl-8"
               >
                 Tuzla, Gebze ve Pendik ilçeleri için 20 yıldır, en yüksek teknoloji ve şeffaf servis anlayışıyla hizmet veriyoruz.
-              </motion.p>
+              </p>
 
               {/* Google Rating Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mb-12"
-              >
+              <div className="mb-12">
                 <GoogleRatingBadge rating={4.9} reviewCount={250} variant="hero" />
-              </motion.div>
+              </div>
 
               {/* Trust Badges Row (Relocated below content to avoid logo collision) */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
+                <div
                   className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] md:text-[11px] font-semibold text-cyan-400 uppercase tracking-[0.2em] backdrop-blur-md"
                 >
                   <span className="relative flex h-2 w-2">
@@ -139,17 +128,14 @@ const KlasOtoPremium = () => {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                   </span>
                   7/24 Destek
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 }}
+                <div
                   className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-amber-custom/10 border border-amber-custom/20 font-tag text-[10px] md:text-[11px] text-amber-custom backdrop-blur-md"
                 >
                   <ShieldCheck size={14} />
-                  Ücretsiz Arıza Tespit
-                </motion.div>
+                  Garanti Desteği
+                </div>
               </div>
 
               <motion.div

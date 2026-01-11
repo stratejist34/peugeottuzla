@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   },
 };
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Schema from "@/components/layout/Schema";
-import MobileActionBar from "@/components/layout/MobileActionBar";
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Schema from '@/components/layout/Schema';
+import MobileActionBar from '@/components/layout/MobileActionBar';
 
 export default function RootLayout({
   children,
@@ -99,4 +99,3 @@ export default function RootLayout({
     </html>
   );
 }
-

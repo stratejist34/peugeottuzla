@@ -73,7 +73,8 @@ const ModelsShowcaseMobile = () => {
                                 <Image
                                     src={model.img}
                                     alt={model.name}
-                                    fill
+                                    width={128}
+                                    height={128}
                                     sizes="(max-width: 768px) 50vw, 200px"
                                     className="object-cover"
                                 />

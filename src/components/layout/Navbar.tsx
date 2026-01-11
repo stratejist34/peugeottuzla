@@ -56,7 +56,7 @@ const Navbar = () => {
             <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-700 ${isNavbarDark ? 'py-3' : 'py-8'}`}>
                 <Link href="/" className="z-50 relative">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={false}
                         animate={{ opacity: 1, x: 0 }}
                         className="flex items-center gap-3 cursor-pointer group"
                     >
