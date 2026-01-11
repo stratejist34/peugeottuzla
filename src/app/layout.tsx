@@ -8,17 +8,17 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 const peugeotNew = localFont({
   src: [
     {
-      path: './fonts/peugeotnew/PeugeotNewRegular.otf',
+      path: './fonts/peugeotnew/PeugeotNew-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/peugeotnew/PeugeotNewBold.otf',
+      path: './fonts/peugeotnew/PeugeotNew-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: './fonts/peugeotnew/PeugeotNewBlack.otf',
+      path: './fonts/peugeotnew/PeugeotNew-Black.woff2',
       weight: '900',
       style: 'normal',
     },
