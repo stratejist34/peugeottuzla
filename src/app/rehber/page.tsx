@@ -1,5 +1,4 @@
 'use client';
-import { Metadata } from 'next';
 import wpContent from '@/data/wp_content.json';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -63,7 +63,7 @@ const ModelsShowcaseMobile = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-2 gap-3">
-                    {popularModels.map((model, index) => (
+                    {popularModels.map((model) => (
                         <div
                             key={model.id}
                             className="bg-neutral-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-amber-custom/30 transition-all"
@@ -73,9 +73,8 @@ const ModelsShowcaseMobile = () => {
                                 <Image
                                     src={model.img}
                                     alt={model.name}
-                                    width={128}
-                                    height={128}
-                                    sizes="(max-width: 768px) 50vw, 200px"
+                                    fill
+                                    sizes="(max-width: 768px) 50vw, 250px"
                                     className="object-cover"
                                 />
                             </div>

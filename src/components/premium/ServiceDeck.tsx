@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MousePointer2, Wrench, Settings, ShieldCheck, Clock, Snowflake, Car, CheckCircle2, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import DiagnosticWindow, { DiagnosticData } from './DiagnosticWindow';
-import { trackEvent } from '@/lib/gtag';
 
 // --- DATA DEFINITION ---
 interface ServiceItem {

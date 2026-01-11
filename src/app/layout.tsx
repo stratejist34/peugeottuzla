@@ -1,29 +1,80 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Archivo_Black, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
-import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
+const peugeotNew = localFont({
+  src: [
+    {
+      path: '../../public/fonts/peugeot-new/PeugeotNewRegular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/peugeot-new/PeugeotNewBold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/peugeot-new/PeugeotNewBlack.otf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-peugeot',
+  display: 'swap',
+});
+
+const manifoldExtended = localFont({
+  src: [
+    {
+      path: '../../public/fonts/manifold-extended/ManifoldExtendedCF-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-manifold',
+  display: 'swap',
+});
+
+const digital7 = localFont({
+  src: '../../public/fonts/digital_7/digital-7.ttf',
+  variable: '--font-digital',
+  display: 'optional',
+});
+
+const dsDigital = localFont({
+  src: '../../public/fonts/ds-digital/DS-DIGI.TTF',
+  variable: '--font-ds-digital',
+  display: 'swap',
+});
 
 const archivoBlack = Archivo_Black({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-archivo-black',
   display: 'swap',
-  preload: true, // Preload critical hero font
 });
 
 const outfit = Outfit({
   weight: ['400', '600', '800'],
   subsets: ['latin'],
   variable: '--font-outfit',
-  display: 'optional', // Non-critical, use optional to prevent blocking
+  display: 'optional',
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   variable: '--font-plus-jakarta-sans',
-  display: 'optional', // Non-critical, use optional to prevent blocking
+  display: 'optional',
 });
 
 export const metadata: Metadata = {
@@ -49,44 +100,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
-      <head>
-        {/* Preconnect to Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        {/* Preload CRITICAL fonts only */}
-        <link
-          rel="preload"
-          href="/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/peugeot-new/PeugeotNewBold.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-      </head>
+    <html lang="tr" className={`${peugeotNew.variable} ${manifoldExtended.variable} ${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} ${digital7.variable} ${dsDigital.variable}`}>
       <body
-        className={`${archivoBlack.variable} ${outfit.variable} ${plusJakartaSans.variable} antialiased bg-[#050505] text-white`}
+        className="antialiased bg-[#050505] text-white"
       >
-        {/* Google Analytics - DEFERRED for performance */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-V329GE6W72"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-V329GE6W72');
-          `}
-        </Script>
+        <GoogleAnalytics gaId="G-V329GE6W72" />
 
         <SmoothScroll>
           <Navbar />

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { MessageCircle, MapPin, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -11,7 +11,6 @@ import PartnersCarousel from '@/components/premium/PartnersCarousel';
 import ModelsShowcase from '@/components/premium/ModelsShowcase';
 import ModelsShowcaseMobile from '@/components/premium/ModelsShowcaseMobile';
 import Testimonials from '@/components/premium/Testimonials';
-import ScrollingText from '@/components/premium/ScrollingText';
 import KnowledgeBase from '@/components/premium/KnowledgeBase';
 import Localization from '@/components/premium/Localization';
 import GoogleRatingBadge from '@/components/premium/GoogleRatingBadge';
@@ -25,8 +24,20 @@ import { trackEvent } from '@/lib/gtag';
 
 const KlasOtoPremium = () => {
   const [isPriceFormOpen, setIsPriceFormOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  // Removed GSAP animations for performance
+  useEffect(() => {
+    // Delay slightly to avoid direct setState in effect warning
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkDesktop);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#07090f] text-white font-sans selection:bg-amber-500 selection:text-black overflow-x-hidden">
@@ -50,19 +61,21 @@ const KlasOtoPremium = () => {
               />
             </div>
 
-            {/* Desktop Image (>= 768px) */}
-            <div className="hidden md:block absolute inset-0 w-full h-full">
-              <Image
-                src="/images/2022_peugeot_308_7_2560x1440.jpg"
-                alt="Peugeot 308 Hero Background"
-                fill
-                priority
-                fetchPriority="high"
-                className="object-cover opacity-40"
-                sizes="100vw"
-                quality={75}
-              />
-            </div>
+            {/* Desktop Image (>= 768px) - Conditional render to prevent mobile download */}
+            {isMounted && isDesktop && (
+              <div className="hidden md:block absolute inset-0 w-full h-full">
+                <Image
+                  src="/images/2022_peugeot_308_7_2560x1440.jpg"
+                  alt="Peugeot 308 Hero Background"
+                  fill
+                  priority
+                  fetchPriority="high"
+                  className="object-cover opacity-40"
+                  sizes="100vw"
+                  quality={75}
+                />
+              </div>
+            )}
 
             {/* Gradients - Desktop only */}
             <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#07090f] via-[#07090f]/70 to-transparent z-10" />

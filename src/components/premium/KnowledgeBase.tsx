@@ -76,6 +76,7 @@ const KnowledgeBase = () => {
                                                 alt={post.title}
                                                 fill
                                                 className="object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                             />
                                         ) : (
                                             <div className="w-full h-full bg-[#111] flex items-center justify-center text-gray-700 font-bold">KLAS OTO</div>

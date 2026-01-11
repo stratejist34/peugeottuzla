@@ -11,7 +11,6 @@ import {
     Car,
     ArrowRight
 } from 'lucide-react';
-import MagneticButton from '@/components/premium/MagneticButton';
 import { trackEvent } from '@/lib/gtag';
 
 const ContactPage = () => {

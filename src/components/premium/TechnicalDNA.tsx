@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Search, ShieldCheck, Zap, Activity, Cpu } from 'lucide-react';
+import { Search, ShieldCheck, Zap, Cpu } from 'lucide-react';
 
 const techPoints = [
     {

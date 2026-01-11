@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Shield, Wrench, Clock, Star, Activity, CheckCircle } from 'lucide-react';
+import { Shield, Wrench, Clock, Star, CheckCircle } from 'lucide-react';
 
 // Modern, temiz ve endüstriyel bir tasarım
 const CorporateIdentity = () => {
@@ -125,8 +125,7 @@ const CorporateIdentity = () => {
                                 alt="Modern Servis Alanı"
                                 fill
                                 className="object-cover saturate-[0.8] transition-all duration-700 group-hover:saturate-100 group-hover:scale-105"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 58vw, 750px"
                             />
 
                             {/* Overlay Gradient */}

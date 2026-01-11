@@ -1,10 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ArrowRight, Gauge, Shield, Zap } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowRight, Gauge, Shield, Zap } from 'lucide-react';
 import Image from 'next/image';
-import wpContent from '@/data/wp_content.json';
 import { trackEvent } from '@/lib/gtag';
 
 const brands = [
@@ -92,7 +90,7 @@ const ModelsShowcase = () => {
                         </div>
 
                         {/* Models Grid/List - No scroll, auto height for all models */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-2 gap-3">
                             {currentModels.map((model, idx) => (
                                 <button
                                     key={model.id}
@@ -127,6 +125,7 @@ const ModelsShowcase = () => {
                                     alt={currentModels[activeModel].name}
                                     fill
                                     className="object-cover transition-transform duration-1000 group-hover:scale-105 contrast-[1.1]"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 

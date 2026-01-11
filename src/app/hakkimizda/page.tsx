@@ -7,11 +7,10 @@ import {
     Award,
     Target,
     History,
-    CheckCircle2,
-    ShieldCheck,
-    Star,
     Heart,
-    Zap
+    Zap,
+    Star,
+    ShieldCheck
 } from 'lucide-react';
 import Image from 'next/image';
 import CorporateIdentity from '@/components/premium/CorporateIdentity';

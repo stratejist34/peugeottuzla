@@ -13,8 +13,6 @@ import {
     Phone,
     Clock,
     UserCheck,
-    Car,
-    Thermometer,
     Wind
 } from 'lucide-react';
 import Image from 'next/image';
