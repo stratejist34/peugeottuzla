@@ -19,13 +19,13 @@ const popularModels = [
     {
         id: '308',
         name: 'Peugeot 308',
-        img: '/images/Peugeot-308-Periyodik-Bakim.jpg',
+        img: '/images/Peugeot-308-peugeot-servis-pendik.png',
         tagline: 'Avrupa\'nın Favorisi'
     },
     {
         id: '508',
         name: 'Peugeot 508',
-        img: '/images/2021-peugeot-508-sedan-1-1536x864.jpg',
+        img: '/images/2022_peugeot_308_7_2560x1440.jpg',
         tagline: 'Premium Sedan'
     },
     {
@@ -37,7 +37,7 @@ const popularModels = [
     {
         id: 'c4',
         name: 'Citroën C4',
-        img: '/images/Citroen-C4-Cactus.jpg',
+        img: '/images/Citroen-C4-Periyodik-Bakim-Fiyatlari.jpg',
         tagline: 'Modern Tasarım'
     },
 ];
