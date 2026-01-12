@@ -105,14 +105,11 @@ const KlasOtoPremium = () => {
                   </motion.span>
                 </span>
                 <span className="block text-white overflow-hidden">
-                  <motion.span
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  <span
                     className="text-premium-gradient tracking-[-0.015em] py-1 block"
                   >
                     PERFORMANS.
-                  </motion.span>
+                  </span>
                 </span>
               </h1>
               <p
