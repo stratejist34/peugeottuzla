@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Script from 'next/script';
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
-import { GA_MEASUREMENT_ID } from '@/lib/gtag';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Schema from '@/components/layout/Schema';
 import MobileActionBar from '@/components/layout/MobileActionBar';
 import ContactIntentProvider from '@/components/analytics/ContactIntentProvider';
+import DeferredAnalytics from '@/components/analytics/DeferredAnalytics';
 
 const peugeotNew = localFont({
   src: [
@@ -107,19 +106,7 @@ export default function RootLayout({
       <body
         className="antialiased bg-[#050505] text-white"
       >
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="ga-init" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
-          `}
-        </Script>
-
+        <DeferredAnalytics />
         <ContactIntentProvider>
           <SmoothScroll>
             <Navbar />

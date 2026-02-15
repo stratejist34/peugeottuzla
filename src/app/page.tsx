@@ -101,7 +101,7 @@ const KlasOtoPremium = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="block font-manifold text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
+                    className="block font-display text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
                   >
                     KUSURSUZ
                   </motion.span>
@@ -265,4 +265,3 @@ const KlasOtoPremium = () => {
 };
 
 export default KlasOtoPremium;
-

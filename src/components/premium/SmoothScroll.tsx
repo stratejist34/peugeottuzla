@@ -24,7 +24,11 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-  // No-op for mobile hydration to avoid full tree re-render
+  // Disable Lenis on mobile to reduce first-load CPU/reflow cost.
+  if (isMobile) {
+    return <>{children}</>;
+  }
+
   return (
     <ReactLenis
       root

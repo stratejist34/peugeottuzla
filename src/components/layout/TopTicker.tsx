@@ -76,6 +76,7 @@ const TopTicker = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [readyToSlide, setReadyToSlide] = useState(false);
+    const [reduceMotion, setReduceMotion] = useState(false);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -83,6 +84,24 @@ const TopTicker = () => {
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    useEffect(() => {
+        const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const update = () => setReduceMotion(media.matches);
+        update();
+        media.addEventListener('change', update);
+        return () => media.removeEventListener('change', update);
+    }, []);
+
+    if (isMobile || reduceMotion) {
+        return (
+            <div className="w-full bg-black border-b border-cyan-500/20 py-2.5 overflow-hidden h-10 md:h-12 flex items-center justify-center relative">
+                <div className="text-xs md:text-sm font-digital tracking-[0.08em] text-cyan-200 uppercase text-center px-3">
+                    TUZLA PEUGEOT & CITROEN OZEL SERVISI
+                </div>
+            </div>
+        );
+    }
 
     const itemsPerGroup = isMobile ? 1 : 3;
     const currentGroup = [];
