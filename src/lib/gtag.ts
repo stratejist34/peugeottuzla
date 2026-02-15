@@ -3,7 +3,7 @@ export const ADS_ID = 'AW-17432793907';
 
 declare global {
     interface Window {
-        gtag: (command: string, action: string, params?: Record<string, unknown>) => void;
+        gtag?: (command: string, action: string, params?: Record<string, unknown>) => void;
     }
 }
 

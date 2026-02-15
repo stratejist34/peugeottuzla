@@ -7,7 +7,6 @@ import Image from 'next/image';
 import MagneticButton from '@/components/premium/MagneticButton';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import TopTicker from './TopTicker';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const Navbar = () => {
@@ -53,7 +52,6 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${isNavbarDark ? 'bg-[#07090f]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl' : 'bg-transparent'}`}>
-            <TopTicker />
             <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-700 ${isNavbarDark ? 'py-3' : 'py-4'}`}>
                 <Link href="/" className="z-50 relative">
                     <motion.div
@@ -173,7 +171,7 @@ const Navbar = () => {
                             className="w-full flex items-center justify-center gap-2 bg-amber-custom text-black px-7 py-4 rounded-xl font-bold text-base transition-all shadow-[0_0_30px_rgba(255,179,0,0.3)]"
                         >
                             <Phone size={18} className="fill-black" />
-                            <span>Hemen Ara & Randevu</span>
+                            <span>Ara ve Randevu</span>
                         </a>
                     </div>
                 </motion.div>

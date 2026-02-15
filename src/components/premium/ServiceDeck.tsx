@@ -127,7 +127,7 @@ const services: ServiceItem[] = [
     {
         id: 'yol-yardim',
         title: 'Yol Yardım',
-        description: '7/24 Acil çekici ve destek.',
+        description: 'Yol yardım ve çekici desteği.',
         icon: <Car size={24} />,
         image: '/images/yol-yardim.jpg',
         diagnosticData: {

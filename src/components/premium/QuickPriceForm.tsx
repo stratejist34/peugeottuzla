@@ -165,7 +165,7 @@ const QuickPriceForm: React.FC<QuickPriceFormProps> = ({ isOpen, onClose }) => {
                                             className="w-full flex items-center justify-center gap-3 px-8 py-5 bg-white/5 border border-white/10 text-white font-black text-sm tracking-widest rounded-xl hover:bg-white/10 transition-all uppercase"
                                         >
                                             <Phone size={18} />
-                                            Veya Hemen Arayın
+                                            Veya Bizi Arayın
                                         </button>
                                     </div>
                                 </form>

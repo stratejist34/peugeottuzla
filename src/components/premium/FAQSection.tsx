@@ -20,7 +20,7 @@ const faqs = [
     },
     {
         q: "Randevusuz araç kabul ediyor musunuz?",
-        a: "Acil durumlar ve yol yardım ihtiyaçları için her zaman hazırız. Ancak periyodik bakımlar ve detaylı onarımlar için size daha kaliteli zaman ayırabilmemiz adına randevu almanızı öneririz."
+        a: "Randevusuz araç kabulü durum ve yoğunluğa göre değerlendiriyoruz. Periyodik bakımlar ve detaylı onarımlar için size daha kaliteli zaman ayırabilmemiz adına randevu almanızı öneririz."
     },
     {
         q: "Yapılan işlemler garantili mi?",

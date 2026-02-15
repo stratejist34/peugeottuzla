@@ -54,7 +54,7 @@ const ContactPage = () => {
                                     icon: <Phone size={22} />,
                                     title: 'Hızlı Destek',
                                     value: '0542 198 51 34',
-                                    sub: '7/24 Randevu ve Danışmanlık',
+                                    sub: 'Randevu ve Danışmanlık',
                                     link: 'tel:05421985134',
                                     color: 'group-hover:text-cyan-400',
                                     eventName: 'tel_aramasi'
@@ -129,7 +129,7 @@ const ContactPage = () => {
                             >
                                 <div className="flex items-center gap-4 text-emerald-500">
                                     <MessageCircle size={28} />
-                                    <span className="font-manifold text-[11px] uppercase tracking-[0.2em] text-emerald-400">WhatsApp Canlı Destek</span>
+                                    <span className="font-manifold text-[11px] uppercase tracking-[0.2em] text-emerald-400">WhatsApp İletişim</span>
                                 </div>
                                 <Send size={18} className="text-emerald-500 group-hover:translate-x-1 transition-transform" />
                             </a>
@@ -178,7 +178,7 @@ const ContactPage = () => {
                                     <p className="text-gray-500 text-sm mb-8 relative z-10 font-body">Her türlü mekanik ve elektronik arıza için uzman ekibimize danışın.</p>
                                     <div className="flex gap-4">
                                         <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-                                        <span className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest leading-none">Şu an Aktif</span>
+                                        <span className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest leading-none">Destek Ekibi</span>
                                     </div>
                                 </div>
 

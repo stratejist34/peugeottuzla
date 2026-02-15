@@ -43,8 +43,8 @@ const SafetyCTA = () => {
                     </h2>
 
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 font-medium">
-                        Profesyonel ekibimiz ve modern yol yardım ekipmanlarımızla 7/24 yanınızdayız.
-                        Bir telefonla en hızlı çözümü kapınıza getiriyoruz.
+                        Profesyonel ekibimiz ve modern yol yardım ekipmanlarımızla hizmet veriyoruz.
+                        İhtiyacınıza uygun çözümü hızlıca planlıyoruz.
                     </p>
 
                     {/* Trust Signals */}
@@ -76,7 +76,7 @@ const SafetyCTA = () => {
                         {
                             icon: <Phone size={48} />,
                             label: '0542 198 51 34',
-                            sub: '7/24 Destek Hattı',
+                            sub: 'Servis Danışma Hattı',
                             color: 'text-amber-custom',
                             href: 'tel:05421985134',
                             eventName: 'tel_aramasi'

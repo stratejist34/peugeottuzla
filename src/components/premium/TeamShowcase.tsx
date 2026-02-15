@@ -125,7 +125,7 @@ const TeamShowcase = () => {
                             }}
                             className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-black text-sm tracking-widest rounded-2xl backdrop-blur-md hover:bg-amber-custom hover:text-black hover:border-amber-custom transition-all duration-300 uppercase"
                         >
-                            Hemen Arayın
+                            Bizi Arayın
                             <span className="text-amber-custom group-hover:text-black">→</span>
                         </a>
                     </MagneticButton>
