@@ -12,8 +12,10 @@ import {
     ArrowRight
 } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const ContactPage = () => {
+    const { openContactIntent } = useContactIntent();
     const handleContactClick = (type: string, value: string) => {
         trackEvent(`iletisim_sayfasi_${type}_butonu_tiklamasi`, { value });
     };
@@ -54,7 +56,8 @@ const ContactPage = () => {
                                     value: '0542 198 51 34',
                                     sub: '7/24 Randevu ve Danışmanlık',
                                     link: 'tel:05421985134',
-                                    color: 'group-hover:text-cyan-400'
+                                    color: 'group-hover:text-cyan-400',
+                                    eventName: 'tel_aramasi'
                                 },
 
                                 {
@@ -77,7 +80,18 @@ const ContactPage = () => {
                                 <motion.a
                                     key={i}
                                     href={item.link}
-                                    onClick={() => handleContactClick(item.title.toLowerCase().replace(' ', '_'), item.value)}
+                                    onClick={(event) => {
+                                        if (item.eventName === 'tel_aramasi') {
+                                            event.preventDefault();
+                                            openContactIntent({
+                                                type: 'phone',
+                                                href: 'tel:05421985134',
+                                                source: 'iletisim_kart'
+                                            });
+                                            return;
+                                        }
+                                        handleContactClick(item.title.toLowerCase().replace(' ', '_'), item.value);
+                                    }}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.1 }}
@@ -99,7 +113,14 @@ const ContactPage = () => {
                             {/* WhatsApp Floating CTA */}
                             <a
                                 href="https://wa.me/905421985134"
-                                onClick={() => handleContactClick('whatsapp', 'whatsapp')}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    openContactIntent({
+                                        type: 'whatsapp',
+                                        href: 'https://wa.me/905421985134',
+                                        source: 'iletisim_whatsapp_cta'
+                                    });
+                                }}
                                 className="flex items-center justify-between p-7 bg-emerald-500/5 border border-emerald-500/10 rounded-[2rem] hover:bg-emerald-500/10 transition-all group"
                             >
                                 <div className="flex items-center gap-4 text-emerald-500">
@@ -155,8 +176,11 @@ const ContactPage = () => {
                                 </div>
 
                                 <div className="p-10 bg-amber-custom rounded-[3.5rem] flex flex-col justify-center relative overflow-hidden group cursor-pointer" onClick={() => {
-                                    window.location.href = 'tel:05421985134';
-                                    handleContactClick('randevu_al', '05421985134');
+                                    openContactIntent({
+                                        type: 'phone',
+                                        href: 'tel:05421985134',
+                                        source: 'iletisim_randevu_karti'
+                                    });
                                 }}>
                                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-[50px] rounded-full group-hover:scale-150 transition-transform duration-1000" />
                                     <h3 className="text-black font-display text-4xl mb-2 relative z-10 leading-none uppercase tracking-tighter">RANDEVU AL</h3>

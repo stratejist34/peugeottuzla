@@ -21,11 +21,13 @@ import ServiceDeck from '@/components/premium/ServiceDeck';
 import BrandTrustBar from '@/components/premium/BrandTrustBar';
 import DiagnosticXray from '@/components/premium/DiagnosticXray';
 import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const KlasOtoPremium = () => {
   const [isPriceFormOpen, setIsPriceFormOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const { openContactIntent } = useContactIntent();
 
   useEffect(() => {
     // Delay slightly to avoid direct setState in effect warning
@@ -151,7 +153,14 @@ const KlasOtoPremium = () => {
               >
                 <a
                   href="tel:05421985134"
-                  onClick={() => trackEvent('anasayfa_hero_tel_arama_butonu_tiklamasi')}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    openContactIntent({
+                      type: 'phone',
+                      href: 'tel:05421985134',
+                      source: 'anasayfa_hero'
+                    });
+                  }}
                   className="btn-premium-primary"
                 >
                   <span>Aracını Kontrole Al</span>

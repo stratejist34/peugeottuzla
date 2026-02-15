@@ -4,11 +4,17 @@ import React from 'react';
 import { MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const Footer = () => {
-    const handleFooterPhoneClick = () => {
-        trackEvent('footer_tel_arama_butonu_tiklamasi');
+    const { openContactIntent } = useContactIntent();
+    const handleFooterPhoneClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        openContactIntent({
+            type: 'phone',
+            href: 'tel:05421985134',
+            source: 'footer'
+        });
     };
     return (
         <footer className="bg-[#07090f] border-t border-white/5 pt-24 pb-12">

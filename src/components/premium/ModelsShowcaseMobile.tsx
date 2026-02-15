@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const popularModels = [
     {
@@ -43,6 +44,7 @@ const popularModels = [
 ];
 
 const ModelsShowcaseMobile = () => {
+    const { openContactIntent } = useContactIntent();
     return (
         <section className="py-16 bg-[#07090f] relative overflow-hidden">
             {/* Background */}
@@ -91,7 +93,15 @@ const ModelsShowcaseMobile = () => {
                                 {/* CTA */}
                                 <a
                                     href="tel:05421985134"
-                                    onClick={() => trackEvent(`mobile_model_randevu_${model.id}`)}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        trackEvent(`mobile_model_randevu_${model.id}`);
+                                        openContactIntent({
+                                            type: 'phone',
+                                            href: 'tel:05421985134',
+                                            source: `mobile_model_${model.id}`
+                                        });
+                                    }}
                                     className="text-xs text-amber-custom font-semibold flex items-center gap-1 hover:gap-2 transition-all"
                                 >
                                     Randevu Al

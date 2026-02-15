@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Gauge, Shield, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const brands = [
     { id: 'peugeot', name: 'Peugeot' },
@@ -26,7 +27,7 @@ const modelData = {
         { id: 'c3', name: 'Citroën C3', tagline: 'Konforlu Şehirli', img: '/images/C3airMain.jpg' },
         { id: 'c4c', name: 'Citroën C4 Cactus', tagline: 'Farklı Bir Deneyim', img: '/images/Citroen-C4-Periyodik-Bakim-Fiyatlari.jpg' },
         { id: 'c4p', name: 'Citroën C4 Picasso', tagline: 'Geniş İç Hacim', img: '/images/Citroen-periyodik-bakimlari.jpg' },
-        { id: 'c4x', name: 'Citroën C4 X', tagline: 'Yenilikçi Tasarım', img: '/images/Citroen-cekici-Citroen-acil-servis-yol-yardim-Tuzla-Citroen-cekici-Gebze-Citroen-yardim-Pendik.jpg' },
+        { id: 'c4x', name: 'Citroën C4 X', tagline: 'Yenilikçi Tasarım', img: '/images/yol-yardim.jpg' },
         { id: 'c5a', name: 'Citroën C5 Aircross', tagline: 'Konforun Zirvesi', img: '/images/C5-Aircross-Bakim-FIyatlari-2.jpeg' },
         { id: 'celysee', name: 'Citroën C-Elysée', tagline: 'Verimli & Şık', img: '/images/citroen-c-elysee.jpg' },
         { id: 'c5', name: 'Citroën C5', tagline: 'Prestijli Sürüş', img: '/images/Tuzla-Citroen-servisi.jpg' },
@@ -40,6 +41,7 @@ const modelData = {
 };
 
 const ModelsShowcase = () => {
+    const { openContactIntent } = useContactIntent();
     const [activeBrand, setActiveBrand] = useState('peugeot');
     const [activeModel, setActiveModel] = useState(0);
 
@@ -149,7 +151,15 @@ const ModelsShowcase = () => {
 
                                     <a
                                         href="tel:05421985134"
-                                        onClick={() => trackEvent('anasayfa_model_randevu_tiklamasi', { model_name: currentModels[activeModel].name })}
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            trackEvent('anasayfa_model_randevu_tiklamasi', { model_name: currentModels[activeModel].name });
+                                            openContactIntent({
+                                                type: 'phone',
+                                                href: 'tel:05421985134',
+                                                source: 'anasayfa_model_randevu'
+                                            });
+                                        }}
                                         className="inline-flex items-center gap-3 px-8 py-4 bg-amber-custom text-black font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black transition-all"
                                     >
                                         RANDEVU OLUŞTUR <ArrowRight size={16} />

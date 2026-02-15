@@ -8,12 +8,13 @@ import MagneticButton from '@/components/premium/MagneticButton';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import TopTicker from './TopTicker';
-import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
+    const { openContactIntent } = useContactIntent();
     const isHome = pathname === '/';
 
     const getPagePrefix = () => {
@@ -93,7 +94,14 @@ const Navbar = () => {
                     <MagneticButton>
                         <a
                             href="tel:05421985134"
-                            onClick={() => trackEvent(`${getPagePrefix()}_navbar_tel_arama_butonu_tiklamasi`)}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                openContactIntent({
+                                    type: 'phone',
+                                    href: 'tel:05421985134',
+                                    source: `${getPagePrefix()}_navbar`
+                                });
+                            }}
                             className="flex items-center gap-2 bg-amber-custom hover:bg-amber-custom/90 text-black px-7 py-3 rounded-full font-bold text-sm transition-all shadow-[0_0_30px_rgba(255,179,0,0.3)]"
                         >
                             <Phone size={14} className="fill-black" />
@@ -146,7 +154,14 @@ const Navbar = () => {
                     <div className="mt-8">
                         <a
                             href="tel:05421985134"
-                            onClick={() => trackEvent(`mobil_menu_navbar_tel_arama_butonu_tiklamasi`)}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                openContactIntent({
+                                    type: 'phone',
+                                    href: 'tel:05421985134',
+                                    source: 'mobil_menu_navbar'
+                                });
+                            }}
                             className="w-full flex items-center justify-center gap-2 bg-amber-custom text-black px-7 py-4 rounded-xl font-bold text-base transition-all shadow-[0_0_30px_rgba(255,179,0,0.3)]"
                         >
                             <Phone size={18} className="fill-black" />

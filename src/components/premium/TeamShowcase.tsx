@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Wrench, Cpu, HeadphonesIcon } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import Image from 'next/image';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const teamMembers = [
     {
@@ -33,6 +34,7 @@ const teamMembers = [
 ];
 
 const TeamShowcase = () => {
+    const { openContactIntent } = useContactIntent();
     return (
         <section className="py-32 bg-gradient-to-b from-[#07090f] via-[#0c0e16] to-[#07090f] relative overflow-hidden">
             {/* Background Glows - Reduced blur for mobile optimization */}
@@ -113,6 +115,14 @@ const TeamShowcase = () => {
                     <MagneticButton>
                         <a
                             href="tel:05421985134"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                openContactIntent({
+                                    type: 'phone',
+                                    href: 'tel:05421985134',
+                                    source: 'team_showcase_cta'
+                                });
+                            }}
                             className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-black text-sm tracking-widest rounded-2xl backdrop-blur-md hover:bg-amber-custom hover:text-black hover:border-amber-custom transition-all duration-300 uppercase"
                         >
                             Hemen Arayın

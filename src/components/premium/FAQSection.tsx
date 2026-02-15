@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from 'lucide-react';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const faqs = [
     {
@@ -28,6 +29,7 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+    const { openContactIntent } = useContactIntent();
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
     return (
@@ -109,7 +111,18 @@ const FAQSection = () => {
                                                         animate={{ opacity: 1 }}
                                                         className="mt-8 flex items-center gap-2 text-amber-custom font-bold text-xs uppercase tracking-widest group/link"
                                                     >
-                                                        <a href="tel:05421985134" className="flex items-center gap-2">
+                                                        <a
+                                                            href="tel:05421985134"
+                                                            onClick={(event) => {
+                                                                event.preventDefault();
+                                                                openContactIntent({
+                                                                    type: 'phone',
+                                                                    href: 'tel:05421985134',
+                                                                    source: 'faq_tel'
+                                                                });
+                                                            }}
+                                                            className="flex items-center gap-2"
+                                                        >
                                                             Fiyat Teklifi Al <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                                                         </a>
                                                     </motion.div>
@@ -133,6 +146,14 @@ const FAQSection = () => {
                     <p className="text-gray-500 text-sm mb-6 uppercase tracking-widest font-bold">Başka bir sorunuz mu var?</p>
                     <a
                         href="https://wa.me/905421985134"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            openContactIntent({
+                                type: 'whatsapp',
+                                href: 'https://wa.me/905421985134',
+                                source: 'faq_whatsapp_cta'
+                            });
+                        }}
                         className="inline-flex items-center gap-3 bg-white/5 hover:bg-amber-custom hover:text-black border border-white/10 hover:border-amber-custom px-8 py-4 rounded-full text-white font-black text-xs uppercase tracking-widest transition-all duration-500 group"
                     >
                         <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />

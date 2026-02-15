@@ -20,8 +20,10 @@ import Link from 'next/link';
 import MagneticButton from '@/components/premium/MagneticButton';
 import Partners from '@/components/premium/Partners';
 import TechnicalDNA from '@/components/premium/TechnicalDNA';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const ServicesPage = () => {
+    const { openContactIntent } = useContactIntent();
     const services = [
         {
             title: 'Bilgisayarlı Arıza Tespit',
@@ -295,6 +297,14 @@ const ServicesPage = () => {
                             <MagneticButton>
                                 <a
                                     href="tel:05421985134"
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        openContactIntent({
+                                            type: 'phone',
+                                            href: 'tel:05421985134',
+                                            source: 'servisler_cta'
+                                        });
+                                    }}
                                     className="flex items-center gap-3 bg-amber-custom hover:bg-[#d97706] text-black px-10 py-5 rounded-full font-black text-sm uppercase tracking-widest transition-all shadow-[0_0_50px_rgba(251,191,36,0.3)]"
                                 >
                                     <Phone size={20} className="fill-black" />

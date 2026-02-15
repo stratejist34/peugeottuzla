@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Phone } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 interface QuickPriceFormProps {
     isOpen: boolean;
@@ -10,6 +11,7 @@ interface QuickPriceFormProps {
 }
 
 const QuickPriceForm: React.FC<QuickPriceFormProps> = ({ isOpen, onClose }) => {
+    const { openContactIntent } = useContactIntent();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -35,12 +37,20 @@ const QuickPriceForm: React.FC<QuickPriceFormProps> = ({ isOpen, onClose }) => {
         const message = `Merhaba, ${formData.service} için fiyat teklifi almak istiyorum.\n\nAdım: ${formData.name}\nTelefon: ${formData.phone}`;
         const whatsappUrl = `https://wa.me/905421985134?text=${encodeURIComponent(message)}`;
 
-        window.open(whatsappUrl, '_blank');
+        openContactIntent({
+            type: 'whatsapp',
+            href: whatsappUrl,
+            source: 'fiyat_teklifi_formu'
+        });
         onClose();
     };
 
     const handlePhoneCall = () => {
-        window.location.href = 'tel:05421985134';
+        openContactIntent({
+            type: 'phone',
+            href: 'tel:05421985134',
+            source: 'fiyat_teklifi_formu'
+        });
         onClose();
     };
 

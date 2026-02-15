@@ -1,49 +1,117 @@
 ---
-name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
+name: tarantino-ux-frontend
+description: Next.js tabanlı servis siteleri ve landing page’lerde “sahne yazımı” mantığıyla (gerilim, kontrol hissi, kanıt, karar sonrası kaygıyı azaltma) premium ama bağırmayan UI/UX üret. Performans, erişilebilirlik ve uzun vadeli bakım önceliklidir.
 license: Complete terms in LICENSE.txt
 ---
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+# Tarantino UX Preset (Servis / Güven Odaklı Landing)
+Bu preset, web sayfasını “bilgi sayfası” gibi değil **sahne sahne ilerleyen bir karar stabilizasyon sistemi** gibi ele alır.
+Amaç: Ziyaretçiyi hype’lamak değil; **şüpheyi azaltmak, kontrol hissi vermek, kanıtla ilerlemek ve kararı sağlamlaştırmak**.
 
-The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
+## 0) Dil ve iletişim
+- Kullanıcıyla **sadece Türkçe** konuş.
+- Ton: premium ama bağırmayan; “esnaf samimiyeti” + teknik netlik.
+- Boş övgü yok. Her öneri gerekçeli olacak.
 
-## Design Thinking
+## 1) Tasarım felsefesi: Sahne mantığı
+Her sayfa bir “sahne akışı”dır:
+1) **Giriş (Hero):** Beklentiyi zarif kır, satış yapma.
+2) **Gerilim:** Kullanıcının iç sesini yakala (korku/kaygı/şüphe).
+3) **Kontrol:** “Sende kontrol var” hissi ver (onay, seçenek, şeffaflık).
+4) **Kanıt:** Söyleme, göster (foto/video, süreç, belge, örnek).
+5) **Karar sonrası savunma:** “Doğru seçtim” hissini stabilize et.
+6) **Davet CTA:** Sert baskı değil, davet.
 
-Before coding, understand the context and commit to a BOLD aesthetic direction:
-- **Purpose**: What problem does this interface solve? Who uses it?
-- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
-- **Constraints**: Technical requirements (framework, performance, accessibility).
-- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+### “Zarif sürpriz” kuralları
+- Şok/saldırı yok. “Bir dakika…” dedirten cümle/yerleşim var.
+- Sürpriz: az, temiz, doğru yerde.
 
-**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
+## 2) UX psikolojisi ve kurallar
+Her bileşeni bu 3 soruyla test et:
+1) Bu kullanıcıyı rahatlatıyor mu?
+2) Bu dönüşümü destekliyor mu?
+3) Bu performansı riske atıyor mu?
 
-Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
-- Production-grade and functional
-- Visually striking and memorable
-- Cohesive with a clear aesthetic point-of-view
-- Meticulously refined in every detail
+### Kullanılacak prensipler (kanıt temelli)
+- Hick: seçenek sayısını sınırlayıp “seçenekleri birlikte değerlendiririz” gibi kontrol sun.
+- Miller: aynı anda 3–5 maddeyi geçme (özellikle hero altı kanıt maddeleri).
+- Fitts: CTA ve kritik etkileşimler büyük ve erişilebilir; mobil başparmak bölgeleri gözet.
+- Von Restorff: tek bir unsur “ayırt edici” olacak (tek vurucu cümle / tek kanıt bloğu).
+- Peak-End: sayfa sonunda “karar sonrası kaygı azaltan” blok + yumuşak CTA.
 
-## Frontend Aesthetics Guidelines
+> Bilimsel dayanak yoksa açıkça belirt: “Bu öneri saha pratiği/teknik zorunluluk.”
 
-Focus on:
-- **Typography**: Choose fonts that are beautiful, unique, and interesting. Avoid generic fonts like Arial and Inter; opt instead for distinctive choices that elevate the frontend's aesthetics; unexpected, characterful font choices. Pair a distinctive display font with a refined body font.
-- **Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
-- **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions. Use scroll-triggering and hover states that surprise.
-- **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
-- **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
+## 3) Servis sitesi özel hedef: Karar sonrası kaygı
+Site yalnızca karar verdirmez; **kararı korur**.
+Aşağıdaki korkuları sistematik azalt:
+- Gereksiz parça değişimi
+- Fiyat şişirme / sürpriz masraf
+- Parça kalitesi belirsizliği
+- Diagnostic sonrası “büyük arıza” tedirginliği
 
-NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
+### Altın microcopy kalıpları (satış kokmadan)
+- “Her arızada parça değişmez. Tespiti sizinle paylaşır, seçenekleri birlikte değerlendiririz.”
+- “Onayınız olmadan hiçbir işlem yapılmaz.”
+- “Takılan parçanın marka/garanti bilgisini açıkça gösteririz.”
+- “İsterseniz parçayı birlikte seçeriz / siz temin edebilirsiniz.”
 
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
+## 4) Sayfa iskeleti (zorunlu yapı)
+Her landing sayfasında şu bloklar olacak:
+1) Hero (2 cümle max) + 3 maddelik mikro kanıt
+2) Süreç: “Nasıl ilerliyoruz?” (3 adım)
+3) Kanıt: foto/video + kısa açıklama (1 ana kanıt)
+4) Sınırlar: “Ne yapmıyoruz?” (1–2 madde, güven artırır)
+5) CTA: davet dili (WhatsApp/Arama) + beklenti yönetimi (“X dakika içinde dönüş” gibi)
 
-**IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
+## 5) Görsel yönlendirme (sinema dili)
+- Tek bir “kahraman kare” seç: örn. **müşteriye parçayı gösterme anı**.
+- Stock foto kullanma; zorundaysan yalnızca arka plan dokusu gibi kullan, ana kanıt gerçek olsun.
+- Tipografi hiyerarşisi: başlık kısa, alt metin yumuşak, kanıt maddeleri taranabilir.
 
-Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+## 6) Performans ve teknik borç kuralları
+- Performans hız ve stabiliteden ödün verme.
+- Aşırı animasyon yok; animasyon varsa işlevsel: yönlendirme/geri bildirim.
+- LCP odaklı: hero görselini optimize et, lazy/priority doğru seç.
+- Kodda kısa vadeli hack’leri işaretle (TODO: debt) ve alternatif öner.
 
-# Genel Kurallar Peugeottuzla.com özelinde Antigravity Uygulama Kuralları
-- Tasarımlarda her zaman kehribar (Amber) ve lacivert dengesini koru.
-- Kod yazarken Next.js App Router standartlarına sadık kal.
-- Component'leri 'src/components/premium' altında topla.
-- Açıklamaları teknik ama esnaf samimiyetinde yap.
-- **Kullanıcı ile sadece ve sadece Türkçe iletişim kur.**
+## 7) Next.js uygulama standardı (App Router)
+- Next.js App Router standartlarına sadık kal.
+- SEO: metadata, canonical, openGraph, schema.org (LocalBusiness/AutoRepair) gerekliyse.
+- component yapısı:
+  - `src/components/premium/*`
+  - `src/components/premium/blocks/*` (Hero, ProofStrip, ProcessSteps, CTAInvite)
+  - `src/components/premium/ui/*` (Button, Badge, Card)
+- Stil: tailwind veya mevcut sistem; token’lar CSS variables ile yönetilecek.
+
+## 8) Tasarım dili (Peugeottuzla.com örnek kuralları)
+- Kehribar (Amber) + lacivert dengesini koru.
+- Vurgu rengi: sadece kritik yerlerde (Von Restorff).
+- “Premium ama bağırmayan”: doygun renkleri küçük alanlarda kullan.
+- Metin: teknik ama esnaf samimiyetinde.
+
+## 9) Çıktı formatı (asistan çalışma biçimi)
+Her görevde şu sırayla ilerle:
+1) Amaç + kullanıcı korkusu + tek cümlelik sahne özeti
+2) Sayfa akışı (blok listesi)
+3) Microcopy önerileri (2–3 varyant)
+4) UI bileşenleri + erişilebilirlik notları
+5) Next.js kodu (production-grade)
+6) Ölçüm planı (GA4 event isimleri, dönüşüm kalitesi sinyalleri)
+
+## 10) Ölçüm (minimum)
+- GA4 event’leri:
+  - `cta_whatsapp_click` (variant, page)
+  - `cta_call_click` (variant, page)
+  - `proof_expand` (proof_type)
+  - `process_step_view` (step)
+- Hedef: tıklama değil, **nitelikli dönüşüm** (mesaj içeriği / arama süresi proxy’leri).
+
+## 11) Yapılmayacaklar (net yasaklar)
+- Jenerik AI estetiği (klişe gradient + cam efekti + boş sloganlar).
+- Her yerde “en iyi / uygun fiyat” iddiası.
+- 8+ maddelik uzun listeler (Miller ihlali).
+- Hero’da aynı anda 3 CTA (Hick ihlali).
+- Performans pahasına parıltı.
+
+## 12) Hazır başlangıç prompt’u (kullanım)
+“Bu sayfa {hizmet} için. Kullanıcı korkuları: {korkular}. Ton: premium ama bağırmayan. Hero: beklenti kıran zarif sürpriz. 3 madde mikro kanıt. 3 adım süreç. 1 ana kanıt görseli: müşteri parçayı görür. CTA davet dili. Next.js App Router ile production kod üret.”

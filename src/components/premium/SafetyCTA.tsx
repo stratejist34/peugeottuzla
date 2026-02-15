@@ -5,10 +5,12 @@ import { Phone, MessageCircle, MapPin, Shield, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 import MagneticButton from './MagneticButton';
 import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 import { usePathname } from 'next/navigation';
 
 const SafetyCTA = () => {
     const pathname = usePathname();
+    const { openContactIntent } = useContactIntent();
     const getPagePrefix = () => {
         if (pathname === '/') return 'anasayfa';
         if (pathname.includes('/iletisim')) return 'iletisim_sayfasi';
@@ -18,7 +20,7 @@ const SafetyCTA = () => {
         <section className="relative py-48 overflow-hidden">
             {/* Background Image Optimization */}
             <Image
-                src="/images/Citroen-cekici-Citroen-acil-servis-yol-yardim-Tuzla-Citroen-cekici-Gebze-Citroen-yardim-Pendik.jpg"
+                src="/images/yol-yardim.jpg"
                 alt="Yol Yardım"
                 fill
                 className="object-cover"
@@ -76,14 +78,16 @@ const SafetyCTA = () => {
                             label: '0542 198 51 34',
                             sub: '7/24 Destek Hattı',
                             color: 'text-amber-custom',
-                            href: 'tel:05421985134'
+                            href: 'tel:05421985134',
+                            eventName: 'tel_aramasi'
                         },
                         {
                             icon: <MessageCircle size={48} />,
                             label: 'WhatsApp',
                             sub: 'Hızlı Mesaj Gönder',
                             color: 'text-green-500',
-                            href: 'https://wa.me/905421985134'
+                            href: 'https://wa.me/905421985134',
+                            eventName: 'whatsapp_yazanlar'
                         },
                         {
                             icon: <MapPin size={48} />,
@@ -103,7 +107,27 @@ const SafetyCTA = () => {
                             <MagneticButton>
                                 <a
                                     href={item.href}
-                                    onClick={() => trackEvent(`${getPagePrefix()}_safety_cta_${item.label.toLowerCase().replace(/ /g, '_')}_tiklamasi`)}
+                                    onClick={(event) => {
+                                        if (item.eventName === 'tel_aramasi') {
+                                            event.preventDefault();
+                                            openContactIntent({
+                                                type: 'phone',
+                                                href: 'tel:05421985134',
+                                                source: `${getPagePrefix()}_safety_cta`
+                                            });
+                                            return;
+                                        }
+                                        if (item.eventName === 'whatsapp_yazanlar') {
+                                            event.preventDefault();
+                                            openContactIntent({
+                                                type: 'whatsapp',
+                                                href: 'https://wa.me/905421985134',
+                                                source: `${getPagePrefix()}_safety_cta`
+                                            });
+                                            return;
+                                        }
+                                        trackEvent(`${getPagePrefix()}_safety_cta_${item.label.toLowerCase().replace(/ /g, '_')}_tiklamasi`);
+                                    }}
                                     className="block bg-neutral-900/60 border border-white/10 shadow-2xl px-12 py-10 rounded-[2.5rem] flex flex-col items-center gap-4 hover:bg-neutral-800/80 transition-all group min-w-[280px]"
                                 >
                                     <div className={`${item.color} group-hover:scale-110 transition-transform duration-500`}>

@@ -3,11 +3,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
-import { trackEvent } from '@/lib/gtag';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 import { usePathname } from 'next/navigation';
 
 const MobileActionBar = () => {
     const pathname = usePathname();
+    const { openContactIntent } = useContactIntent();
 
     // Sayfa adına göre event ismini belirle
     const getPagePrefix = () => {
@@ -17,12 +18,22 @@ const MobileActionBar = () => {
         return 'diger_sayfalar';
     };
 
-    const handlePhoneClick = () => {
-        trackEvent(`${getPagePrefix()}_sticky_tel_arama_butonu_tiklamasi`);
+    const handlePhoneClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        openContactIntent({
+            type: 'phone',
+            href: 'tel:05421985134',
+            source: `${getPagePrefix()}_sticky`
+        });
     };
 
-    const handleWhatsAppClick = () => {
-        trackEvent(`${getPagePrefix()}_sticky_whatsapp_butonu_tiklamasi`);
+    const handleWhatsAppClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        openContactIntent({
+            type: 'whatsapp',
+            href: 'https://wa.me/905421985134',
+            source: `${getPagePrefix()}_sticky`
+        });
     };
 
     return (
