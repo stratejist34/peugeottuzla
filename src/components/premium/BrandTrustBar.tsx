@@ -15,7 +15,7 @@ const BrandTrustBar = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-12 lg:mt-16 flex flex-col items-center lg:items-start gap-6"
+            className="mt-6 lg:mt-8 flex flex-col items-center lg:items-start gap-6"
         >
             <div className="flex items-center gap-3">
                 <div className="h-px w-8 bg-amber-custom/30" />

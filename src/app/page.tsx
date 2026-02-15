@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { MessageCircle, MapPin, ShieldCheck, ArrowRight } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 import CorporateIdentity from '@/components/premium/CorporateIdentity';
 import SafetyCTA from '@/components/premium/SafetyCTA';
 import Partners from '@/components/premium/Partners';
@@ -91,11 +91,11 @@ const KlasOtoPremium = () => {
         {/* Removed ghost text as per user request */}
 
         <div className="container mx-auto px-6 relative">
-          <div className="pt-40 pb-10 md:pt-64 md:pb-32 lg:pt-48 lg:pb-32 min-h-[100vh] flex flex-col lg:flex-row items-center relative z-10">
+          <div className="pt-28 pb-10 md:pt-48 md:pb-32 lg:pt-36 lg:pb-32 min-h-[100vh] flex flex-col lg:flex-row items-center relative z-10">
             {/* Left Column: Content */}
             <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
 
-              <h1 className="text-4xl md:text-7xl lg:text-8xl font-display tracking-tighter leading-[0.95] mb-8 py-2 uppercase max-w-[78vw]">
+              <h1 className="text-4xl md:text-7xl lg:text-8xl font-display tracking-tighter leading-[0.95] mb-4 py-2 uppercase max-w-[78vw]">
                 <span className="block text-gray-500 overflow-hidden">
                   <motion.span
                     initial={{ opacity: 0, y: 30 }}
@@ -117,39 +117,20 @@ const KlasOtoPremium = () => {
               <p
                 className="font-body text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-8 border-l-4 border-amber-custom pl-8"
               >
-                Tuzla, Gebze ve Pendik ilçeleri için 20 yıldır, en yüksek teknoloji ve şeffaf servis anlayışıyla hizmet veriyoruz.
+                Tuzla, Gebze ve Pendik’te 20 yıldır
+                şeffaf ve teknoloji odaklı servis.
               </p>
 
               {/* Google Rating Badge */}
-              <div className="mb-12">
-                <GoogleRatingBadge rating={4.9} reviewCount={250} variant="hero" />
-              </div>
-
-              {/* Trust Badges Row (Relocated below content to avoid logo collision) */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-                <div
-                  className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] md:text-[11px] font-semibold text-cyan-400 uppercase tracking-[0.2em] backdrop-blur-md"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-                  </span>
-                  7/24 Destek
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-amber-custom/10 border border-amber-custom/20 font-tag text-[10px] md:text-[11px] text-amber-custom backdrop-blur-md"
-                >
-                  <ShieldCheck size={14} />
-                  Garanti Desteği
-                </div>
+              <div className="mb-6">
+                <GoogleRatingBadge rating={4.9} reviewCount={50} variant="hero" />
               </div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap gap-4 justify-center lg:justify-start"
+                className="flex flex-wrap gap-2 justify-center lg:justify-start"
               >
                 <a
                   href="tel:05421985134"
@@ -180,16 +161,6 @@ const KlasOtoPremium = () => {
                   </button>
                 </div>
 
-                <button
-                  onClick={() => {
-                    window.open('https://maps.app.goo.gl/bze2NgSC2xgxw5LL9', '_blank');
-                    trackEvent('anasayfa_hero_konum_butonu_tiklamasi');
-                  }}
-                  className="btn-premium-secondary"
-                >
-                  <MapPin className="mr-2 text-amber-custom" size={18} />
-                  Konum Al
-                </button>
               </motion.div>
 
               <BrandTrustBar />
@@ -200,22 +171,7 @@ const KlasOtoPremium = () => {
               <DiagnosticXray />
             </div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-            >
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] vertical-text">Kaydır</span>
-              <div className="w-px h-16 bg-gradient-to-b from-amber-custom to-transparent relative overflow-hidden">
-                <motion.div
-                  animate={{ y: ["-100%", "100%"] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                  className="absolute top-0 left-0 w-full h-full bg-white"
-                />
-              </div>
-            </motion.div>
+            {/* Scroll Indicator removed */}
           </div>
         </div>
       </header >

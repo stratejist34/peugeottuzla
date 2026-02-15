@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 const MobileActionBar = () => {
     const pathname = usePathname();
     const { openContactIntent } = useContactIntent();
+    const [isVisible, setIsVisible] = useState(false);
 
     // Sayfa adına göre event ismini belirle
     const getPagePrefix = () => {
@@ -36,11 +37,21 @@ const MobileActionBar = () => {
         });
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsVisible(window.scrollY > 140);
+        };
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden px-2 pb-2 pointer-events-none">
             <motion.div
-                initial={{ y: 100 }}
-                animate={{ y: 0 }}
+                initial={{ y: 100, opacity: 0 }}
+                animate={isVisible ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
                 className="bg-[#07090f]/95 backdrop-blur-xl border border-white/10 p-2 rounded-3xl flex gap-2 shadow-[0_-10px_50px_rgba(0,0,0,0.5)] pointer-events-auto"
             >
                 <a

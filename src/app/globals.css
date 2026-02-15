@@ -106,6 +106,14 @@
     /* Essential for some clipping contexts */
   }
 
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  .animate-marquee2 {
+    animation: marquee2 60s linear infinite;
+  }
+
   .scroller-content-left {
     display: flex;
     width: max-content;
@@ -178,6 +186,24 @@
   }
 
 
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 /* Custom Scrollbar */

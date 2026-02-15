@@ -8,37 +8,37 @@ const popularModels = [
     {
         id: '208',
         name: 'Peugeot 208',
-        img: '/images/Peugeot-208.jpg',
+        img: '/images/Peugeot-208-768x558.avif',
         tagline: 'Şehir İkonu'
     },
     {
         id: '2008',
         name: 'Peugeot 2008',
-        img: '/images/Peugeot_2008-Bakim-Fiyatlari.jpg',
+        img: '/images/Peugeot_2008-Bakim-Fiyatlari-768x432.avif',
         tagline: 'Kompakt SUV'
     },
     {
         id: '308',
         name: 'Peugeot 308',
-        img: '/images/Peugeot-308-peugeot-servis-pendik.png',
+        img: '/images/Peugeot-308-peugeot-servis-pendik-768x421.avif',
         tagline: 'Avrupa\'nın Favorisi'
     },
     {
         id: '508',
         name: 'Peugeot 508',
-        img: '/images/2022_peugeot_308_7_2560x1440.jpg',
+        img: '/images/2022_peugeot_308_7_2560x1440-768x432.avif',
         tagline: 'Premium Sedan'
     },
     {
         id: 'c3',
         name: 'Citroën C3',
-        img: '/images/C3airMain.jpg',
+        img: '/images/C3airMain-768x432.avif',
         tagline: 'Konforlu Şehirli'
     },
     {
         id: 'c4',
         name: 'Citroën C4',
-        img: '/images/Citroen-C4-Periyodik-Bakim-Fiyatlari.jpg',
+        img: '/images/Citroen-C4-Periyodik-Bakim-Fiyatlari-768x512.avif',
         tagline: 'Modern Tasarım'
     },
 ];
@@ -68,7 +68,7 @@ const ModelsShowcaseMobile = () => {
                     {popularModels.map((model) => (
                         <div
                             key={model.id}
-                            className="bg-neutral-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-amber-custom/30 transition-all"
+                            className="bg-neutral-900/70 rounded-xl overflow-hidden border border-white/5 hover:border-amber-custom/30 transition-all"
                         >
                             {/* Image */}
                             <div className="relative h-32 w-full bg-neutral-800/50">
@@ -77,6 +77,7 @@ const ModelsShowcaseMobile = () => {
                                     alt={model.name}
                                     fill
                                     sizes="(max-width: 768px) 50vw, 250px"
+                                    quality={60}
                                     className="object-cover"
                                 />
                             </div>

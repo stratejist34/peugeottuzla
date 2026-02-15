@@ -8,11 +8,11 @@ import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 const faqs = [
     {
         q: "Fiyatlarınız yetkili servise oranla nasıl?",
-        a: "Kesinlikle hayır. Yetkili servis kalitesini ve uzmanlığını, özel servis maliyetleriyle sunuyoruz. Şeffaf fiyat politikamız sayesinde sürpriz maliyetlerle karşılaşmazsınız."
+        a: "Yetkili servise göre daha erişilebilir fiyatlar sunarız. İşlem öncesi net bilgilendirme yapar, onayınız olmadan hiçbir işlem uygulamayız. Şeffaf fiyat politikamız sayesinde sürpriz maliyetlerle karşılaşmazsınız."
     },
     {
         q: "Hangi marka araçlara hizmet veriyorsunuz?",
-        a: "Peugeot ve Citroën markalarında 20 yıllık derin teknik uzmanlığa sahibiz. Tüm model ve yaşlardaki Peugeot & Citroën araçlarınız için profesyonel çözümler üretiyoruz."
+        a: "Peugeot, Citroën ve DS markalarında 20 yıllık derin teknik uzmanlığa sahibiz. Tüm model ve yaşlardaki Peugeot, Citroën ve DS araçlarınız için profesyonel çözümler üretiyoruz."
     },
     {
         q: "Orijinal yedek parça mı kullanıyorsunuz?",

@@ -66,7 +66,8 @@ const ContactPage = () => {
                                     value: 'Tuzla Sanayi Sitesi',
                                     sub: 'Aydıntepe, Fedakar Sokağı Tuzla oto Sanayi Sitesi B-2 Blok No:39/123, 34903 Tuzla/İstanbul',
                                     link: 'https://maps.app.goo.gl/bze2NgSC2xgxw5LL9',
-                                    color: 'group-hover:text-cyan-400'
+                                    color: 'group-hover:text-cyan-400',
+                                    eventName: 'konum_tiklandi'
                                 },
                                 {
                                     icon: <Clock size={22} />,
@@ -89,6 +90,9 @@ const ContactPage = () => {
                                                 source: 'iletisim_kart'
                                             });
                                             return;
+                                        }
+                                        if (item.eventName === 'konum_tiklandi') {
+                                            trackEvent('konum_tiklandi', { source: 'iletisim_kart' });
                                         }
                                         handleContactClick(item.title.toLowerCase().replace(' ', '_'), item.value);
                                     }}
@@ -153,7 +157,10 @@ const ContactPage = () => {
                                     <a
                                         href="https://maps.app.goo.gl/bze2NgSC2xgxw5LL9"
                                         target="_blank"
-                                        onClick={() => handleContactClick('konum_yol_tarifi', 'google_maps')}
+                                        onClick={() => {
+                                            trackEvent('konum_tiklandi', { source: 'iletisim_harita' });
+                                            handleContactClick('konum_yol_tarifi', 'google_maps');
+                                        }}
                                         className="bg-white text-black px-6 py-3 rounded-full font-bold text-[10px] uppercase tracking-widest shadow-2xl hover:bg-cyan-500 hover:text-white transition-all pointer-events-auto"
                                     >
                                         Yol Tarifi Al

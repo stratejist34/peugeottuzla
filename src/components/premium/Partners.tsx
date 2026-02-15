@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const partners = [
-    { name: 'Peugeot', logo: '/images/Peugeot-logo.png' },
+    { name: 'Peugeot', logo: '/images/logolar/Peugeot-logo.webp', invert: false },
     { name: 'Citroen', logo: '/images/Citroen-PNG-Transparent-Image.png' },
     { name: 'Stellantis', logo: '/images/Stellantis.png' },
     { name: 'Bosch', logo: '/images/Bosch.png' },
@@ -62,7 +62,7 @@ const Partners = () => {
 
             <div className="relative flex overflow-x-hidden z-10">
                 {/* First Marquee Set */}
-                <div className="animate-marquee flex whitespace-nowrap items-center py-4">
+                <div className="animate-marquee flex whitespace-nowrap items-center py-4 min-w-max will-change-transform">
                     {[...partners, ...partners].map((partner, index) => (
                         <div key={index} className="mx-8 group">
                             <div className="bg-white/5 backdrop-blur-md px-10 py-6 rounded-2xl border border-white/10 flex items-center justify-center min-w-[200px] h-[100px] transition-all duration-500 hover:border-amber-custom/50 hover:bg-white/10">
@@ -71,7 +71,7 @@ const Partners = () => {
                                     alt={partner.name}
                                     width={140}
                                     height={50}
-                                    className="max-h-12 w-auto object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                                    className={`max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity ${partner.invert === false ? 'brightness-100 invert-0' : 'brightness-0 invert'}`}
                                 />
                             </div>
                         </div>
@@ -79,7 +79,7 @@ const Partners = () => {
                 </div>
 
                 {/* Second Marquee Set for Seamless Loop */}
-                <div className="absolute top-0 animate-marquee2 flex whitespace-nowrap items-center py-4">
+                <div className="absolute top-0 animate-marquee2 flex whitespace-nowrap items-center py-4 min-w-max will-change-transform">
                     {[...partners, ...partners].map((partner, index) => (
                         <div key={index} className="mx-8 group">
                             <div className="bg-white/5 backdrop-blur-md px-10 py-6 rounded-2xl border border-white/10 flex items-center justify-center min-w-[200px] h-[100px] transition-all duration-500 hover:border-amber-custom/50 hover:bg-white/10">
@@ -88,7 +88,7 @@ const Partners = () => {
                                     alt={partner.name}
                                     width={140}
                                     height={50}
-                                    className="max-h-12 w-auto object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                                    className={`max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity ${partner.invert === false ? 'brightness-100 invert-0' : 'brightness-0 invert'}`}
                                 />
                             </div>
                         </div>
@@ -96,22 +96,6 @@ const Partners = () => {
                 </div>
             </div>
 
-            <style jsx>{`
-                .animate-marquee {
-                    animation: marquee 60s linear infinite;
-                }
-                .animate-marquee2 {
-                    animation: marquee2 60s linear infinite;
-                }
-                @keyframes marquee {
-                    0% { transform: translateX(0%); }
-                    100% { transform: translateX(-100%); }
-                }
-                @keyframes marquee2 {
-                    0% { transform: translateX(100%); }
-                    100% { transform: translateX(0%); }
-                }
-            `}</style>
         </section>
     );
 };

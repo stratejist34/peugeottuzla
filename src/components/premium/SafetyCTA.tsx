@@ -94,7 +94,8 @@ const SafetyCTA = () => {
                             label: 'Yol Tarifi Al',
                             sub: 'Tuzla Sanayi Sitesi',
                             color: 'text-amber-custom/80',
-                            href: 'https://maps.app.goo.gl/bze2NgSC2xgxw5LL9'
+                            href: 'https://maps.app.goo.gl/bze2NgSC2xgxw5LL9',
+                            eventName: 'konum_tiklandi'
                         }
                     ].map((item, idx) => (
                         <motion.div
@@ -124,6 +125,10 @@ const SafetyCTA = () => {
                                                 href: 'https://wa.me/905421985134',
                                                 source: `${getPagePrefix()}_safety_cta`
                                             });
+                                            return;
+                                        }
+                                        if (item.eventName === 'konum_tiklandi') {
+                                            trackEvent('konum_tiklandi', { source: `${getPagePrefix()}_safety_cta` });
                                             return;
                                         }
                                         trackEvent(`${getPagePrefix()}_safety_cta_${item.label.toLowerCase().replace(/ /g, '_')}_tiklamasi`);

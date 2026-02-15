@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Navigation, ShieldCheck, Banknote, Wrench } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+import { trackEvent } from '@/lib/gtag';
 
 const trustSignals = [
     {
@@ -121,7 +122,10 @@ const Localization = () => {
                             <div className="absolute bottom-8 left-8 right-8">
                                 <MagneticButton>
                                     <button
-                                        onClick={() => window.open('https://maps.app.goo.gl/bze2NgSC2xgxw5LL9', '_blank')}
+                                        onClick={() => {
+                                            trackEvent('konum_tiklandi', { source: 'localization_map' });
+                                            window.open('https://maps.app.goo.gl/bze2NgSC2xgxw5LL9', '_blank');
+                                        }}
                                         className="w-full bg-white text-black font-black text-xs uppercase tracking-[0.2em] py-5 rounded-xl shadow-2xl flex items-center justify-center gap-3 hover:bg-amber-custom transition-colors"
                                     >
                                         <Navigation size={18} />
