@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from 'next/script';
 import "./globals.css";
 import SmoothScroll from '@/components/premium/SmoothScroll';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GA_MEASUREMENT_ID } from '@/lib/gtag';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Schema from '@/components/layout/Schema';
+import MobileActionBar from '@/components/layout/MobileActionBar';
+import ContactIntentProvider from '@/components/analytics/ContactIntentProvider';
 
 const peugeotNew = localFont({
   src: [
@@ -42,6 +48,7 @@ const manifoldExtended = localFont({
   ],
   variable: '--font-manifold',
   display: 'swap',
+  preload: false,
 });
 
 const digital7 = localFont({
@@ -54,6 +61,7 @@ const digital7 = localFont({
   ],
   variable: '--font-digital',
   display: 'swap',
+  preload: false,
 });
 
 const dsDigital = localFont({
@@ -66,6 +74,7 @@ const dsDigital = localFont({
   ],
   variable: '--font-ds-digital',
   display: 'swap',
+  preload: false,
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -73,6 +82,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-plus-jakarta-sans',
   display: 'optional',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -87,12 +97,6 @@ export const metadata: Metadata = {
   },
 };
 
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import Schema from '@/components/layout/Schema';
-import MobileActionBar from '@/components/layout/MobileActionBar';
-import ContactIntentProvider from '@/components/analytics/ContactIntentProvider';
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -103,7 +107,18 @@ export default function RootLayout({
       <body
         className="antialiased bg-[#050505] text-white"
       >
-        <GoogleAnalytics gaId="G-V329GE6W72" />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="lazyOnload"
+        />
+        <Script id="ga-init" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+          `}
+        </Script>
 
         <ContactIntentProvider>
           <SmoothScroll>

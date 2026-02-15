@@ -177,17 +177,17 @@ const KlasOtoPremium = () => {
       </header >
 
       {/* --- STATS SECTION --- Desktop only for performance */}
-      <div className="hidden md:block">
+      <div className="hidden md:block cv-auto">
         <StatsSection />
       </div>
 
       {/* --- CORPORATE IDENTITY --- */}
-      <div id="hakkımızda">
+      <div id="hakkımızda" className="cv-auto">
         <CorporateIdentity />
       </div>
 
       {/* --- MODELS SHOWCASE --- Separate mobile/desktop */}
-      <div id="modeller">
+      <div id="modeller" className="cv-auto">
         {/* Mobile: Simplified 6-model grid */}
         <div className="block md:hidden">
           <ModelsShowcaseMobile />
@@ -199,17 +199,19 @@ const KlasOtoPremium = () => {
       </div>
 
       {/* --- PARTNERS --- Separate mobile/desktop */}
-      {/* Mobile: 4-item static carousel */}
-      <div className="block md:hidden">
-        <PartnersCarousel />
-      </div>
-      {/* Desktop: Full marquee */}
-      <div className="hidden md:block">
-        <Partners />
+      <div className="cv-auto">
+        {/* Mobile: 4-item static carousel */}
+        <div className="block md:hidden">
+          <PartnersCarousel />
+        </div>
+        {/* Desktop: Full marquee */}
+        <div className="hidden md:block">
+          <Partners />
+        </div>
       </div>
 
       {/* --- SERVICES GRID --- */}
-      < section id="hizmetler" className="py-32 px-6 relative bg-gradient-to-b from-[#07090f] to-[#0c0e16]" >
+      < section id="hizmetler" className="cv-auto py-32 px-6 relative bg-gradient-to-b from-[#07090f] to-[#0c0e16]" >
         <div className="container mx-auto">
           <div className="text-center mb-24">
             <motion.div
@@ -230,21 +232,31 @@ const KlasOtoPremium = () => {
       </section>
 
       {/* --- KNOWLEDGE BASE --- */}
-      < KnowledgeBase />
+      <div className="cv-auto">
+        < KnowledgeBase />
+      </div>
 
       {/* --- TESTIMONIALS --- */}
-      < Testimonials />
+      <div className="cv-auto">
+        < Testimonials />
+      </div>
 
       {/* --- FAQ SECTION --- */}
-      < FAQSection />
+      <div className="cv-auto">
+        < FAQSection />
+      </div>
 
       {/* --- TEAM SHOWCASE (Hidden for now) --- */}
       {/* < TeamShowcase /> */}
 
       {/* --- LOCALIZATION & TRUST --- */}
-      < Localization />
+      <div className="cv-auto">
+        < Localization />
+      </div>
 
-      <SafetyCTA />
+      <div className="cv-auto">
+        <SafetyCTA />
+      </div>
 
       {/* --- QUICK PRICE FORM MODAL --- */}
       < QuickPriceForm isOpen={isPriceFormOpen} onClose={() => setIsPriceFormOpen(false)} />

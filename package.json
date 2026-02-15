@@ -6,7 +6,7 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "set NEXT_DISABLE_TURBOPACK=1 && set NODE_OPTIONS=--max-old-space-size=4096 && next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

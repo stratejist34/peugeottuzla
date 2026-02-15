@@ -120,7 +120,7 @@ const TopTicker = () => {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: "-100%", opacity: 0 }}
                         transition={{ type: "spring", damping: 25, stiffness: 120 }}
-                        className="flex items-center gap-12 md:gap-24 text-sm md:text-base font-digital tracking-[0.1em] text-cyan-400 absolute whitespace-nowrap"
+                        className="flex items-center gap-12 md:gap-24 text-sm md:text-base font-digital tracking-[0.1em] text-cyan-200 absolute whitespace-nowrap"
                     >
                         {currentGroup.map((text, idx) => (
                             <div key={idx} className="flex items-center gap-3">

@@ -15,8 +15,13 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console logs in production
   },
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
   },
+  allowedDevOrigins: [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://192.168.1.100:3000'
+  ],
 
   async redirects() {
     return [
@@ -111,4 +116,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

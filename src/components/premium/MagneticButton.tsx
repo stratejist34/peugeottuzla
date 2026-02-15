@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 interface MagneticButtonProps {
     children: React.ReactNode;
@@ -10,9 +10,12 @@ interface MagneticButtonProps {
 
 const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '', onClick }) => {
     const magneticRef = useRef<HTMLDivElement>(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isMobile, setIsMobile] = useState(false);
-    const [rect, setRect] = useState<DOMRect | null>(null);
+    const rectRef = useRef<DOMRect | null>(null);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+    const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
     useEffect(() => {
         const checkMobile = () => {
@@ -24,27 +27,29 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '
     }, []);
 
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (isMobile || !rect) return;
+        if (isMobile || !rectRef.current) return;
 
         const { clientX, clientY } = e;
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        const centerX = rectRef.current.left + rectRef.current.width / 2;
+        const centerY = rectRef.current.top + rectRef.current.height / 2;
 
-        const x = clientX - centerX;
-        const y = clientY - centerY;
+        const dx = clientX - centerX;
+        const dy = clientY - centerY;
 
-        setPosition({ x: x * 0.4, y: y * 0.4 });
+        x.set(dx * 0.4);
+        y.set(dy * 0.4);
     };
 
     const handleMouseEnter = () => {
         if (!isMobile && magneticRef.current) {
-            setRect(magneticRef.current.getBoundingClientRect());
+            rectRef.current = magneticRef.current.getBoundingClientRect();
         }
     };
 
     const handleMouseLeave = () => {
-        setPosition({ x: 0, y: 0 });
-        setRect(null);
+        x.set(0);
+        y.set(0);
+        rectRef.current = null;
     };
 
     return (
@@ -53,8 +58,7 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            animate={{ x: position.x, y: position.y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            style={{ x: springX, y: springY }}
             className={`inline-block cursor-pointer ${className}`}
             onClick={onClick}
         >
