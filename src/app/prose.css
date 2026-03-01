@@ -62,7 +62,7 @@
 
     th {
         color: #ffffff !important;
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
         font-weight: 700 !important;
         font-size: 11px !important;
         text-transform: uppercase !important;
@@ -103,7 +103,7 @@
     h4,
     h5,
     h6 {
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
         color: white !important;
         letter-spacing: -0.01em !important;
         line-height: 1.3 !important;
@@ -191,7 +191,7 @@
         font-size: 1.25rem;
         margin-bottom: 1.25rem;
         color: #3b82f6 !important;
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
@@ -233,7 +233,7 @@
         display: inline-flex !important;
         align-items: center !important;
         gap: 0.75rem !important;
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
     }
 
     .cta-call {
@@ -294,14 +294,14 @@
         justify-content: center !important;
         font-weight: 900 !important;
         color: #fff !important;
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
         font-size: 1.25rem !important;
     }
 
     .review-meta strong {
         color: white !important;
         font-size: 1.1rem !important;
-        font-family: 'Peugeot New', sans-serif !important;
+        font-family: var(--font-peugeot), sans-serif !important;
     }
 
     .review-stars {
@@ -372,7 +372,7 @@
     color: white !important;
     padding: 1.25rem 2.5rem !important;
     border-radius: 9999px !important;
-    font-family: 'Peugeot New', sans-serif !important;
+    font-family: var(--font-peugeot), sans-serif !important;
     font-size: 0.75rem !important;
     text-transform: uppercase !important;
     letter-spacing: 0.2em !important;

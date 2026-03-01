@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MousePointer2, Wrench, Settings, ShieldCheck, Clock, Snowflake, Car, CheckCircle2, ArrowRight } from 'lucide-react';
+import { MousePointer2, Wrench, Settings, ShieldCheck, Clock, Snowflake, Car, CheckCircle2, ArrowRight, Phone } from 'lucide-react';
 import Image from 'next/image';
 import DiagnosticWindow, { DiagnosticData } from './DiagnosticWindow';
+import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 // --- DATA DEFINITION ---
 interface ServiceItem {
@@ -164,6 +165,7 @@ const services: ServiceItem[] = [
 
 const ServiceDeck = () => {
     const [activeService, setActiveService] = useState<ServiceItem>(services[0]);
+    const { openContactIntent } = useContactIntent();
 
     return (
         <div className="flex flex-col lg:flex-row gap-8 min-h-[600px] relative">
@@ -285,9 +287,24 @@ const ServiceDeck = () => {
                         <h2 className="text-4xl font-display uppercase text-white mb-4 leading-none">
                             {activeService.title}
                         </h2>
-                        <p className="text-gray-400 text-lg leading-relaxed border-l-2 border-amber-custom pl-4">
+                        <p className="text-gray-400 text-lg leading-relaxed border-l-2 border-amber-custom pl-4 mb-6">
                             {activeService.description}
                         </p>
+                        <a
+                            href="tel:05421985134"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                openContactIntent({
+                                    type: 'phone',
+                                    href: 'tel:05421985134',
+                                    source: `servis_deck_${activeService.id}`
+                                });
+                            }}
+                            className="inline-flex items-center gap-2 bg-amber-custom text-black px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wider hover:shadow-[0_10px_30px_rgba(255,179,0,0.3)] transition-all active:scale-95"
+                        >
+                            <Phone size={16} className="fill-black" />
+                            Hemen Ara
+                        </a>
                     </motion.div>
                 </div>
             </div>

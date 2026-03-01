@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, ExternalLink } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 interface GoogleRatingBadgeProps {
     rating?: number;
@@ -46,29 +46,21 @@ const GoogleRatingBadge: React.FC<GoogleRatingBadgeProps> = ({
 
     if (variant === 'compact') {
         return (
-            <a
-                href="https://www.google.com/search?q=klas+oto+peugeot+tuzla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group ${className}`}
+            <div
+                className={`inline-flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl ${className}`}
             >
                 {renderStars()}
                 <span className="text-xs font-black text-white">{rating}</span>
                 <span className="text-[9px] text-gray-500 font-bold">({reviewCount}+)</span>
-                <ExternalLink size={10} className="text-gray-600 group-hover:text-amber-custom transition-colors" />
-            </a>
+            </div>
         );
     }
 
     return (
-        <motion.a
-            href="https://www.google.com/search?q=klas+oto+peugeot+tuzla"
-            target="_blank"
-            rel="noopener noreferrer"
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            className={`inline-flex items-center gap-3 px-5 py-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:bg-white/10 hover:border-amber-custom/30 transition-all duration-300 group ${className}`}
+            className={`inline-flex items-center gap-3 px-5 py-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md transition-all duration-300 ${className}`}
         >
             <div className="flex items-center gap-2">
                 {renderStars()}
@@ -83,12 +75,7 @@ const GoogleRatingBadge: React.FC<GoogleRatingBadgeProps> = ({
                     {reviewCount}+ Müşteri Yorumu
                 </span>
             </div>
-
-            <ExternalLink
-                size={14}
-                className="text-gray-600 group-hover:text-amber-custom group-hover:translate-x-1 transition-all ml-2"
-            />
-        </motion.a>
+        </motion.div>
     );
 };
 

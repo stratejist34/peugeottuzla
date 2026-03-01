@@ -38,13 +38,13 @@ const SafetyCTA = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-tight">
-                        Yolda Kalmayın, <br />
-                        <span className="text-amber-custom bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-600">Güvende Kalın.</span>
+                        Aracınız İçin <br />
+                        <span className="text-amber-custom bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-600">Hemen Arayın.</span>
                     </h2>
 
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 font-medium">
-                        Profesyonel ekibimiz ve modern yol yardım ekipmanlarımızla hizmet veriyoruz.
-                        İhtiyacınıza uygun çözümü hızlıca planlıyoruz.
+                        Ücretsiz arıza tespiti. Orijinal parça garantisi.
+                        Tuzla, Pendik ve Gebze&apos;ye aynı gün hizmet.
                     </p>
 
                     {/* Trust Signals */}

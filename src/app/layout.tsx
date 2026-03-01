@@ -9,6 +9,7 @@ import Schema from '@/components/layout/Schema';
 import MobileActionBar from '@/components/layout/MobileActionBar';
 import ContactIntentProvider from '@/components/analytics/ContactIntentProvider';
 import DeferredAnalytics from '@/components/analytics/DeferredAnalytics';
+import ClarityScript from '@/components/analytics/ClarityScript';
 
 const peugeotNew = localFont({
   src: [
@@ -107,6 +108,7 @@ export default function RootLayout({
         className="antialiased bg-[#050505] text-white"
       >
         <DeferredAnalytics />
+        <ClarityScript />
         <ContactIntentProvider>
           <SmoothScroll>
             <Navbar />

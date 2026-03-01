@@ -39,7 +39,7 @@ const MobileActionBar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsVisible(window.scrollY > 140);
+            setIsVisible(window.scrollY > 50);
         };
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -59,7 +59,7 @@ const MobileActionBar = () => {
                     onClick={handlePhoneClick}
                     className="flex-1 bg-amber-custom text-black py-4 rounded-2xl flex items-center justify-center gap-2 font-black text-xs uppercase tracking-widest active:scale-95 transition-transform"
                 >
-                    <Phone size={18} className="fill-black" /> ARA
+                    <Phone size={16} className="fill-black" /> 0542 198 51 34
                 </a>
                 <a
                     href="https://wa.me/905421985134"

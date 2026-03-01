@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { MessageCircle, ArrowRight } from 'lucide-react';
+import { MessageCircle, ArrowRight, Phone, Clock } from 'lucide-react';
 import CorporateIdentity from '@/components/premium/CorporateIdentity';
 import SafetyCTA from '@/components/premium/SafetyCTA';
 import Partners from '@/components/premium/Partners';
@@ -20,7 +20,9 @@ import StatsSection from '@/components/premium/StatsSection';
 import ServiceDeck from '@/components/premium/ServiceDeck';
 import BrandTrustBar from '@/components/premium/BrandTrustBar';
 import DiagnosticXray from '@/components/premium/DiagnosticXray';
+import MidPageCTA from '@/components/premium/MidPageCTA';
 import { trackEvent } from '@/lib/gtag';
+import { getVariant, trackConversion } from '@/lib/abtest';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const KlasOtoPremium = () => {
@@ -28,6 +30,12 @@ const KlasOtoPremium = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const { openContactIntent } = useContactIntent();
+  const [heroCta, setHeroCta] = useState('ŞİMDİ ARA');
+
+  useEffect(() => {
+    const variant = getVariant('hero_cta', ['simdi_ara', 'ucretsiz_randevu']);
+    setHeroCta(variant === 'ucretsiz_randevu' ? 'ÜCRETSİZ RANDEVU AL' : 'ŞİMDİ ARA');
+  }, []);
 
   useEffect(() => {
     // Delay slightly to avoid direct setState in effect warning
@@ -46,7 +54,7 @@ const KlasOtoPremium = () => {
 
 
       {/* --- HERO SECTION --- */}
-      <header className="relative min-h-[95vh] flex items-center pt-0 overflow-hidden">
+      <header className="relative min-h-[80vh] flex items-center pt-0 overflow-hidden">
         {/* Animated Background Elements */}
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
@@ -103,34 +111,68 @@ const KlasOtoPremium = () => {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="block font-display text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
                   >
-                    KUSURSUZ
+                    PEUGEOT SERVİS
                   </motion.span>
                 </span>
                 <span className="block text-white overflow-hidden">
                   <span
                     className="text-premium-gradient tracking-[-0.015em] py-1 block"
                   >
-                    PERFORMANS.
+                    TUZLA.
                   </span>
                 </span>
               </h1>
               <p
-                className="font-body text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-8 border-l-4 border-amber-custom pl-8"
+                className="font-body text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-6 border-l-4 border-amber-custom pl-8"
               >
-                Tuzla, Gebze ve Pendik’te 20 yıldır
-                şeffaf ve teknoloji odaklı servis.
+                Yetkili servisin yarı fiyatına.
+                Aynı gün teslim. <span className="text-amber-custom font-semibold">Ücretsiz arıza tespiti.</span>
               </p>
 
-              {/* Google Rating Badge */}
-              <div className="mb-6">
+              {/* Google Rating + Dynamic Hours Badge */}
+              <div className="flex flex-wrap items-center gap-3 mb-5">
                 <GoogleRatingBadge rating={4.9} reviewCount={50} variant="hero" />
+                {(() => {
+                  const now = new Date();
+                  const turkeyHour = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Istanbul' }));
+                  const hour = turkeyHour.getHours();
+                  const minute = turkeyHour.getMinutes();
+                  const day = turkeyHour.getDay(); // 0=Sun
+                  const timeVal = hour * 60 + minute;
+                  const isOpen = day >= 1 && day <= 6 && timeVal >= 510 && timeVal <= 1110; // 08:30-18:30, Mon-Sat
+                  return isOpen ? (
+                    <div className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                      </span>
+                      <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Şu an açığız — 18:30&apos;a kadar</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 px-4 py-2.5 bg-red-500/10 border border-red-500/20 rounded-2xl">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                      </span>
+                      <span className="text-red-400 text-xs font-bold uppercase tracking-wider">Açılış: Pzt-Cmt 08:30</span>
+                    </div>
+                  );
+                })()}
               </div>
 
+              {/* Phone Number - Trust Signal (subtle, not competing CTA) */}
+              <div className="inline-flex items-center gap-3 text-lg md:text-xl text-gray-400 mb-6">
+                <Phone className="text-amber-custom" size={20} />
+                <span className="font-semibold tracking-wide">0542 198 51 34</span>
+              </div>
+
+              <BrandTrustBar />
+
+              {/* Single Dominant CTA — Von Restorff Isolation */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap gap-2 justify-center lg:justify-start"
+                className="flex justify-center lg:justify-start"
               >
                 <a
                   href="tel:05421985134"
@@ -141,29 +183,15 @@ const KlasOtoPremium = () => {
                       href: 'tel:05421985134',
                       source: 'anasayfa_hero'
                     });
+                    trackConversion('hero_cta', 'hero_cta_click');
                   }}
                   className="btn-premium-primary"
                 >
-                  <span>Aracını Kontrole Al</span>
+                  <Phone className="mr-2 relative z-10" size={18} />
+                  <span>{heroCta}</span>
                   <ArrowRight className="ml-2 relative z-10 transition-transform group-hover:translate-x-1" size={18} />
                 </a>
-
-                <div className="hidden md:block">
-                  <button
-                    onClick={() => {
-                      setIsPriceFormOpen(true);
-                      trackEvent('anasayfa_hero_fiyat_teklifi_butonu_tiklamasi');
-                    }}
-                    className="btn-premium-secondary"
-                  >
-                    <MessageCircle className="mr-2 text-amber-custom" size={18} />
-                    FİYAT TEKLİFİ AL
-                  </button>
-                </div>
-
               </motion.div>
-
-              <BrandTrustBar />
             </div>
 
             {/* Right Column: Diagnostic System */}
@@ -230,6 +258,11 @@ const KlasOtoPremium = () => {
 
         </div>
       </section>
+
+      {/* --- MID-PAGE CTA --- */}
+      <div className="cv-auto">
+        <MidPageCTA />
+      </div>
 
       {/* --- KNOWLEDGE BASE --- */}
       <div className="cv-auto">

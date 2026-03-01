@@ -135,7 +135,7 @@
 
   /* Display - For Hero title (Peugeot New Black) */
   .font-display {
-    font-family: 'Peugeot New', sans-serif;
+    font-family: var(--font-peugeot), sans-serif;
     font-weight: 700;
     @apply uppercase;
   }
@@ -146,21 +146,21 @@
 
   /* Heading - For H1/H2 section titles (Peugeot New Bold) */
   .font-heading {
-    font-family: 'Peugeot New', sans-serif;
+    font-family: var(--font-peugeot), sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   /* Digital - For Ticker and Tech elements */
   .font-digital {
-    font-family: 'Digital-7', monospace;
+    font-family: var(--font-digital), monospace;
     font-weight: 400;
     @apply tracking-widest;
   }
 
   /* Subheading - For H3 and card titles */
   .font-subheading {
-    font-family: 'Peugeot New', sans-serif;
+    font-family: var(--font-peugeot), sans-serif;
     font-weight: 600;
     @apply tracking-normal;
   }
@@ -197,6 +197,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -206,12 +207,14 @@
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(0%);
   }
 }
 
 @media (max-width: 768px) {
+
   .animate-pulse,
   .animate-pulse-slow,
   .animate-spin-slow,
@@ -362,7 +365,7 @@
   overflow: hidden;
   background: #ffb300;
   color: #000;
-  font-family: 'Peugeot New', sans-serif;
+  font-family: var(--font-peugeot), sans-serif;
   font-weight: 700 !important;
   font-size: 0.75rem !important;
   text-transform: uppercase;
@@ -408,7 +411,7 @@
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  font-family: 'Peugeot New', sans-serif;
+  font-family: var(--font-peugeot), sans-serif;
   font-weight: 700 !important;
   font-size: 0.75rem !important;
   text-transform: uppercase;

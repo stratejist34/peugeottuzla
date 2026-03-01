@@ -87,8 +87,25 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                {/* Desktop Action Button */}
-                <div className="hidden lg:flex items-center gap-4">
+                {/* Desktop Action Buttons */}
+                <div className="hidden lg:flex items-center gap-3">
+                    <MagneticButton>
+                        <a
+                            href="tel:05421985134"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                openContactIntent({
+                                    type: 'phone',
+                                    href: 'tel:05421985134',
+                                    source: `${getPagePrefix()}_navbar`
+                                });
+                            }}
+                            className="relative flex items-center gap-2 bg-amber-custom text-black px-6 py-3 rounded-full font-black text-sm transition-all shadow-[0_10px_30px_rgba(255,179,0,0.2)] hover:shadow-[0_10px_40px_rgba(255,179,0,0.35)] overflow-hidden"
+                        >
+                            <Phone size={16} className="fill-black" />
+                            <span>0542 198 51 34</span>
+                        </a>
+                    </MagneticButton>
                     <MagneticButton>
                         <a
                             href="https://web.whatsapp.com/send?phone=905421985134"
@@ -100,10 +117,9 @@ const Navbar = () => {
                                     source: `${getPagePrefix()}_navbar`
                                 });
                             }}
-                            className="relative flex items-center gap-2 bg-[#0a0c10] text-white px-7 py-3 rounded-full font-bold text-sm transition-all border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:border-white/20 overflow-hidden"
+                            className="relative flex items-center gap-2 bg-[#0a0c10] text-white px-6 py-3 rounded-full font-bold text-sm transition-all border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:border-white/20 overflow-hidden"
                         >
                             <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(255,255,255,0.16),transparent_60%)]" />
-                            <span className="pointer-events-none absolute -top-4 right-6 h-16 w-16 rounded-full bg-[#25D366]/10 blur-[18px]" />
                             <span className="relative z-10 flex items-center gap-2">
                                 <span className="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="14" height="14" className="fill-black">
@@ -171,7 +187,7 @@ const Navbar = () => {
                             className="w-full flex items-center justify-center gap-2 bg-amber-custom text-black px-7 py-4 rounded-xl font-bold text-base transition-all shadow-[0_0_30px_rgba(255,179,0,0.3)]"
                         >
                             <Phone size={18} className="fill-black" />
-                            <span>Ara ve Randevu</span>
+                            <span>Hemen Ara</span>
                         </a>
                     </div>
                 </motion.div>
