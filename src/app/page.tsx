@@ -108,14 +108,11 @@ const KlasOtoPremium = () => {
 
               <h1 className="text-4xl md:text-7xl lg:text-8xl font-display tracking-tighter leading-[0.95] mb-4 py-2 uppercase max-w-[78vw]">
                 <span className="block text-gray-500 overflow-hidden">
-                  <motion.span
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="block font-display text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px]"
+                  <span
+                    className="block font-display text-outline md:text-outline-lg tracking-[-0.01em] py-1 relative -top-[2px] animate-[fadeInUp_0.8s_ease-out_both]"
                   >
                     PEUGEOT SERVİS
-                  </motion.span>
+                  </span>
                 </span>
                 <span className="block text-white overflow-hidden">
                   <span
@@ -171,11 +168,8 @@ const KlasOtoPremium = () => {
               <BrandTrustBar />
 
               {/* Single Dominant CTA — Von Restorff Isolation */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="flex justify-center lg:justify-start"
+              <div
+                className="flex justify-center lg:justify-start animate-[fadeInUp_0.6s_ease-out_0.6s_both]"
               >
                 <a
                   href="tel:05421985134"
@@ -194,7 +188,7 @@ const KlasOtoPremium = () => {
                   <span>{heroCta}</span>
                   <ArrowRight className="ml-2 relative z-10 transition-transform group-hover:translate-x-1" size={18} />
                 </a>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right Column: Diagnostic System */}
