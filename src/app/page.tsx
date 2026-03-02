@@ -3,27 +3,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { MessageCircle, ArrowRight, Phone, Clock } from 'lucide-react';
-import CorporateIdentity from '@/components/premium/CorporateIdentity';
-import SafetyCTA from '@/components/premium/SafetyCTA';
-import Partners from '@/components/premium/Partners';
-import PartnersCarousel from '@/components/premium/PartnersCarousel';
-import ModelsShowcase from '@/components/premium/ModelsShowcase';
-import ModelsShowcaseMobile from '@/components/premium/ModelsShowcaseMobile';
-import Testimonials from '@/components/premium/Testimonials';
-import KnowledgeBase from '@/components/premium/KnowledgeBase';
-import Localization from '@/components/premium/Localization';
+import dynamic from 'next/dynamic';
+import { ArrowRight, Phone } from 'lucide-react';
 import GoogleRatingBadge from '@/components/premium/GoogleRatingBadge';
-import FAQSection from '@/components/premium/FAQSection';
-import QuickPriceForm from '@/components/premium/QuickPriceForm';
-import StatsSection from '@/components/premium/StatsSection';
-import ServiceDeck from '@/components/premium/ServiceDeck';
 import BrandTrustBar from '@/components/premium/BrandTrustBar';
 import DiagnosticXray from '@/components/premium/DiagnosticXray';
-import MidPageCTA from '@/components/premium/MidPageCTA';
 import { trackEvent } from '@/lib/gtag';
 import { getVariant, trackConversion } from '@/lib/abtest';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
+
+// Below-fold dynamic imports — loaded lazily to reduce initial JS bundle
+const CorporateIdentity = dynamic(() => import('@/components/premium/CorporateIdentity'));
+const SafetyCTA = dynamic(() => import('@/components/premium/SafetyCTA'));
+const Partners = dynamic(() => import('@/components/premium/Partners'));
+const PartnersCarousel = dynamic(() => import('@/components/premium/PartnersCarousel'));
+const ModelsShowcase = dynamic(() => import('@/components/premium/ModelsShowcase'));
+const ModelsShowcaseMobile = dynamic(() => import('@/components/premium/ModelsShowcaseMobile'));
+const Testimonials = dynamic(() => import('@/components/premium/Testimonials'));
+const KnowledgeBase = dynamic(() => import('@/components/premium/KnowledgeBase'));
+const Localization = dynamic(() => import('@/components/premium/Localization'));
+const FAQSection = dynamic(() => import('@/components/premium/FAQSection'));
+const QuickPriceForm = dynamic(() => import('@/components/premium/QuickPriceForm'));
+const StatsSection = dynamic(() => import('@/components/premium/StatsSection'));
+const ServiceDeck = dynamic(() => import('@/components/premium/ServiceDeck'));
+const MidPageCTA = dynamic(() => import('@/components/premium/MidPageCTA'));
 
 const KlasOtoPremium = () => {
   const [isPriceFormOpen, setIsPriceFormOpen] = useState(false);
@@ -92,8 +95,8 @@ const KlasOtoPremium = () => {
             <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent z-10" />
           </div>
 
-          {/* Top Right Navy Glow - Kept separate/floating */}
-          <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-blue-600/10 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/4 animate-pulse-slow pointer-events-none" />
+          {/* Top Right Navy Glow - GPU composited */}
+          <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-blue-600/10 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/4 animate-pulse-slow pointer-events-none" style={{ willChange: 'transform, opacity' }} />
         </div>
 
         {/* Removed ghost text as per user request */}

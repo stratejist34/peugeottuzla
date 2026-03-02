@@ -15,7 +15,8 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console logs in production
   },
   experimental: {
-    optimizeCss: false,
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   allowedDevOrigins: [
     'http://localhost:3000',
