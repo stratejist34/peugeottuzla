@@ -459,3 +459,44 @@
 .btn-premium-secondary:hover::before {
   left: 100%;
 }
+
+/* --- Shimmer Wrap (replaces MagneticButton) --- */
+.shimmer-wrap {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.shimmer-wrap:hover {
+  transform: translateY(-2px);
+}
+
+.shimmer-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent);
+  transition: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.shimmer-wrap:hover::before {
+  animation: shimmer-sweep 0.8s ease-out forwards;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -60%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}

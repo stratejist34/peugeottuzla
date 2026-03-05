@@ -51,31 +51,7 @@ const manifoldExtended = localFont({
   preload: false,
 });
 
-const digital7 = localFont({
-  src: [
-    {
-      path: './fonts/digital7/digital7.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-digital',
-  display: 'swap',
-  preload: false,
-});
-
-const dsDigital = localFont({
-  src: [
-    {
-      path: './fonts/dsdigital/dsdigi.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-ds-digital',
-  display: 'swap',
-  preload: false,
-});
+// digital7 and dsDigital fonts removed — unused in any component
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
@@ -103,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${peugeotNew.variable} ${manifoldExtended.variable} ${plusJakartaSans.variable} ${digital7.variable} ${dsDigital.variable}`}>
+    <html lang="tr" className={`${peugeotNew.variable} ${manifoldExtended.variable} ${plusJakartaSans.variable}`}>
       <body
         className="antialiased bg-[#050505] text-white"
       >

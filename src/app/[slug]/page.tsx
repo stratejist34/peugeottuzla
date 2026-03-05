@@ -11,6 +11,23 @@ interface Props {
     params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const validItems = wpContent.filter(item =>
+        item.slug &&
+        item.slug !== 'home' &&
+        item.slug !== 'rehber'
+    );
+
+    // Get unique slugs
+    const uniqueSlugs = Array.from(new Set(validItems.map(item => item.slug)));
+
+    return uniqueSlugs.map((slug) => ({
+        slug: slug,
+    }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const item = wpContent.find((i) => i.slug === slug);
