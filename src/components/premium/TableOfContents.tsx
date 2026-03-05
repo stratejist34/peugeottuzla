@@ -30,7 +30,8 @@ const TableOfContents = ({ content }: TOCProps) => {
                 const headingElements = doc.querySelectorAll('h2, h3');
 
                 const parsedHeadings = Array.from(headingElements).map((el, index) => {
-                    const text = el.textContent || '';
+                    // Strip [ICON_*] placeholders and clean up whitespace
+                    const text = (el.textContent || '').replace(/\[ICON_\w+\]/g, '').trim();
                     return { id: `heading-${index}`, text, level: parseInt(el.tagName[1]) };
                 });
 
