@@ -76,8 +76,9 @@ const Footer = () => {
                         © 2025 Klas Oto Peugeot & Citroen Özel Servis. Tüm hakları saklıdır.
                     </p>
                     <div className="flex gap-8 text-xs font-normal text-white/80 tracking-normal">
-                        <a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a>
-                        <a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a>
+                        <Link href="/gizlilik-politikasi" className="hover:text-white transition-colors">Gizlilik Politikası</Link>
+                        <Link href="/kullanim-sartlari" className="hover:text-white transition-colors">Kullanım Şartları</Link>
+                        <Link href="/kvkk" className="hover:text-white transition-colors">KVKK</Link>
                     </div>
                 </div>
             </div>
