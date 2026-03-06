@@ -125,7 +125,7 @@ const HomeClient = () => {
               <p
                 className="font-body text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-6 border-l-4 border-amber-custom pl-8"
               >
-                Yetkili servisin yarı fiyatına.
+                20 yıllık Peugeot uzmanlığı, şeffaf fiyatlandırma.
                 Aynı gün teslim. <span className="text-amber-custom font-semibold">Ücretsiz arıza tespiti.</span>
               </p>
 

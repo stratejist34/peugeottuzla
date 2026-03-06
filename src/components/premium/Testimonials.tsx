@@ -15,7 +15,7 @@ const reviews = [
     {
         name: 'Canan Demir',
         role: 'Citroën C3',
-        text: 'Aracımın triger değişimi ve periyodik bakımı için tercih ettim. Yetkili servis kalitesinde, çok daha makul fiyatlarla hizmet aldım. Her aşamada bilgilendirdiler.',
+        text: 'Aracımın triger değişimi ve periyodik bakımı için tercih ettim. Profesyonel servis kalitesinde, çok daha makul fiyatlarla hizmet aldım. Her aşamada bilgilendirdiler.',
         rating: 5,
         date: '1 ay önce'
     },

@@ -7,8 +7,8 @@ import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 const faqs = [
     {
-        q: "Fiyatlarınız yetkili servise oranla nasıl?",
-        a: "Yetkili servise göre daha erişilebilir fiyatlar sunarız. İşlem öncesi net bilgilendirme yapar, onayınız olmadan hiçbir işlem uygulamayız. Şeffaf fiyat politikamız sayesinde sürpriz maliyetlerle karşılaşmazsınız."
+        q: "Fiyatlandırmanız nasıl?",
+        a: "Şeffaf ve önceden bilgilendirmeli fiyat politikası uygularız. İşlem öncesi net bilgilendirme yapar, onayınız olmadan hiçbir işlem uygulamayız. 20 yıllık deneyim ve uzman kadromuzla kaliteli hizmeti ulaşılabilir fiyatlarla sunuyoruz."
     },
     {
         q: "Hangi marka araçlara hizmet veriyorsunuz?",

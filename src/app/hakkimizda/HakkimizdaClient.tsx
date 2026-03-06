@@ -72,7 +72,7 @@ export default function HakkimizdaClient() {
                             </p>
                             <p className="text-gray-400 text-lg leading-relaxed mb-12">
                                 Bugün Tuzla Sanayi Sitesi&apos;ndeki modern servisimizde, en son teknoloji diyagnoz cihazları ve uzman usta kadromuzla,
-                                yetkili servis kalitesini ulaşılabilir fiyatlarla sunuyoruz.
+                                profesyonel bakım ve onarım hizmetini ulaşılabilir fiyatlarla sunuyoruz.
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

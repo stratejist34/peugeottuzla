@@ -31,7 +31,7 @@ const Footer = () => {
                             />
                         </div>
                         <p className="text-gray-400 leading-relaxed mb-8 font-medium">
-                            Peugeot ve Citroen araçlarınız için yetkili servis standartlarında hizmet sunuyoruz. 20 yıllık uzmanlık tecrübemiz ile yanınızdayız.
+                            Peugeot ve Citroen araçlarınız için uzman özel servis hizmeti sunuyoruz. 20 yıllık uzmanlık tecrübemiz ile yanınızdayız.
                         </p>
                     </div>
 

@@ -134,7 +134,7 @@ export default function ServislerClient() {
                             <span className="text-outline-lg font-display tracking-wider opacity-90">SERVİS ÇÖZÜMLERİ.</span>
                         </h1>
                         <p className="max-w-3xl mx-auto text-gray-400 font-body text-base md:text-lg leading-relaxed">
-                            Peugeot ve Citroen uzmanlığımızla, aracınız için yetkili servis standartlarında,
+                            Peugeot ve Citroen uzmanlığımızla, aracınız için profesyonel standartlarda,
                             şeffaf ve garantili bakım hizmetleri sunuyoruz.
                         </p>
                     </motion.div>
