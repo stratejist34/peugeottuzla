@@ -314,6 +314,7 @@ export default function ServislerClient() {
 
                             <Link
                                 href="/iletisim"
+                                prefetch={false}
                                 className="text-white font-black text-sm uppercase tracking-[0.3em] hover:text-blue-500 transition-colors py-4 px-6 underline decoration-blue-600 underline-offset-8"
                             >
                                 Bize Ulaşın

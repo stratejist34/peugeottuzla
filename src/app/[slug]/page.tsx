@@ -69,6 +69,7 @@ export default async function DynamicWPPage({ params }: Props) {
                     {/* Back Navigation */}
                     <Link
                         href={isPost ? "/rehber" : "/"}
+                        prefetch={false}
                         className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 group text-sm font-bold uppercase tracking-widest"
                     >
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

@@ -38,11 +38,11 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-bold mb-8 text-base tracking-normal border-l-2 border-amber-custom pl-4">Hızlı Erişim</h3>
                         <ul className="space-y-4 text-gray-400 font-normal text-sm">
-                            <li><Link href="/" className="hover:text-white transition-colors">Anasayfa</Link></li>
-                            <li><Link href="/servisler" className="hover:text-white transition-colors">Servisler</Link></li>
-                            <li><Link href="/hakkimizda" className="hover:text-white transition-colors">Hakkımızda</Link></li>
-                            <li><Link href="/rehber" className="hover:text-white transition-colors">Rehber</Link></li>
-                            <li><Link href="/iletisim" className="hover:text-white transition-colors">İletişim</Link></li>
+                            <li><Link href="/" prefetch={false} className="hover:text-white transition-colors">Anasayfa</Link></li>
+                            <li><Link href="/servisler" prefetch={false} className="hover:text-white transition-colors">Servisler</Link></li>
+                            <li><Link href="/hakkimizda" prefetch={false} className="hover:text-white transition-colors">Hakkımızda</Link></li>
+                            <li><Link href="/rehber" prefetch={false} className="hover:text-white transition-colors">Rehber</Link></li>
+                            <li><Link href="/iletisim" prefetch={false} className="hover:text-white transition-colors">İletişim</Link></li>
                         </ul>
                     </div>
 
@@ -76,10 +76,20 @@ const Footer = () => {
                         © 2025 Klas Oto Peugeot & Citroen Özel Servis. Tüm hakları saklıdır.
                     </p>
                     <div className="flex gap-8 text-xs font-normal text-white/80 tracking-normal">
-                        <Link href="/gizlilik-politikasi" className="hover:text-white transition-colors">Gizlilik Politikası</Link>
-                        <Link href="/kullanim-sartlari" className="hover:text-white transition-colors">Kullanım Şartları</Link>
-                        <Link href="/kvkk" className="hover:text-white transition-colors">KVKK</Link>
+                        <Link href="/gizlilik-politikasi" prefetch={false} className="hover:text-white transition-colors">Gizlilik Politikası</Link>
+                        <Link href="/kullanim-sartlari" prefetch={false} className="hover:text-white transition-colors">Kullanım Şartları</Link>
+                        <Link href="/kvkk" prefetch={false} className="hover:text-white transition-colors">KVKK</Link>
                     </div>
+                </div>
+                <div className="mt-6 flex justify-center">
+                    <a
+                        href="https://wa.me/905426084887?text=Merhaba%2C%20PeugeotTuzla.com%20sitesini%20inceledim%20ve%20benzer%20bir%20premium%20dijital%20yap%C4%B1%20kurmak%20istiyorum."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] text-white/25 hover:text-white/60 transition-colors duration-300 tracking-widest uppercase"
+                    >
+                        Dijital Mimari &amp; Strateji · Emrah Gümüşsoy
+                    </a>
                 </div>
             </div>
         </footer>

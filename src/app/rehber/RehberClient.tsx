@@ -43,6 +43,7 @@ export default function RehberClient({ posts }: { posts: PostData[] }) {
                 >
                     <Link
                         href="/"
+                        prefetch={false}
                         className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors group px-4 py-2 rounded-full border border-white/5 bg-white/5 backdrop-blur-md"
                     >
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -89,6 +90,7 @@ export default function RehberClient({ posts }: { posts: PostData[] }) {
                         >
                             <Link
                                 href={`/${post.slug}`}
+                                prefetch={false}
                                 className="group flex flex-col h-full bg-neutral-900/20 backdrop-blur-xl border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-blue-500/30 transition-all duration-700 hover:translate-y-[-8px] shadow-2xl relative"
                             >
                                 <div className="relative aspect-[16/10] overflow-hidden">

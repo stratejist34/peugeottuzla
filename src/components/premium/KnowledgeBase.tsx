@@ -46,7 +46,7 @@ const KnowledgeBase = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                     >
-                        <Link href="/rehber" className="group flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-amber-custom hover:text-black transition-all duration-300">
+                        <Link href="/rehber" prefetch={false} className="group flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-amber-custom hover:text-black transition-all duration-300">
                             <span className="font-semibold text-sm">Tüm Yazıları Gör</span>
                             <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </Link>
@@ -64,7 +64,7 @@ const KnowledgeBase = () => {
                             transition={{ delay: i * 0.1 }}
                             className="group h-full"
                         >
-                            <Link href={`/${post.slug}`} className="block h-full relative">
+                            <Link href={`/${post.slug}`} prefetch={false} className="block h-full relative">
                                 {/* Card Container */}
                                 <div className="relative h-full bg-[#0c0e16] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 group-hover:border-amber-custom/30 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col">
 

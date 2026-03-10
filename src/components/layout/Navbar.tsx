@@ -52,8 +52,8 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${isNavbarDark ? 'bg-[#07090f]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl' : 'bg-transparent'}`}>
-            <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-700 ${isNavbarDark ? 'py-3' : 'py-4'}`}>
-                <Link href="/" className="z-50 relative">
+            <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-700 ${isScrolled ? 'py-2' : 'py-4'}`}>
+                <Link href="/" prefetch={false} className="z-50 relative">
                     <motion.div
                         initial={false}
                         animate={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ const Navbar = () => {
                                 width={180}
                                 height={50}
                                 priority
-                                className="object-contain transition-all duration-500 group-hover:scale-105 w-24 md:w-36 lg:w-[180px]"
+                                className={`object-contain transition-all duration-500 group-hover:scale-105 ${isScrolled ? 'w-16 md:w-22 lg:w-[110px]' : 'w-20 md:w-28 lg:w-[140px]'}`}
                             />
                             <div className="absolute -inset-4 bg-amber-custom/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
                         </div>
@@ -79,6 +79,7 @@ const Navbar = () => {
                         <Link
                             key={idx}
                             href={item.href}
+                            prefetch={false}
                             className={`relative hover:text-white transition-colors group ${pathname === item.href ? 'text-white' : ''}`}
                         >
                             {item.name}
@@ -164,6 +165,7 @@ const Navbar = () => {
                             <Link
                                 key={idx}
                                 href={item.href}
+                                prefetch={false}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className={`flex items-center gap-4 py-2 border-b border-white/5 ${pathname === item.href ? 'text-white border-amber-custom/30' : ''}`}
                             >

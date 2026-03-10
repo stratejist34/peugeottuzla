@@ -60,7 +60,7 @@ const Localization = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-1">ADRES</h3>
-                                        <p className="text-gray-400 text-sm leading-relaxed">Aydınlı, Tuzla Sanayi Sitesi, 34947 <br /> Tuzla / İstanbul</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed">Aydıntepe, Fedakar Sokağı Tuzla Oto Sanayi Sitesi <br /> B-2 Blok No:39/123, 34903 Tuzla/İstanbul</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4 group">
@@ -108,7 +108,7 @@ const Localization = () => {
                         <div className="absolute -inset-4 bg-amber-custom/10 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <div className="relative rounded-[2rem] overflow-hidden border border-white/10 h-[500px] w-full shadow-2xl">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.3753381665493!2d29.378!3d40.855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDUxJzE4LjAiTiAyOcKwMjInNDAuOCJF!5e0!3m2!1str!2str!4v1703623123456!5m2!1str!2str"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.9427920174044!2d29.303818399999997!3d40.8511798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cadda898056a21%3A0xda4a34066adfe388!2sPeugeot%20Citroen%20Servis%20Klas%20Oto!5e0!3m2!1str!2str!4v1767080147901!5m2!1str!2str"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.9) contrast(1.2)' }}
