@@ -47,6 +47,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url: `https://peugeottuzla.com/${slug}`,
             images: item.thumbnail ? [item.thumbnail] : [],
         },
+        twitter: {
+            card: "summary_large_image",
+            title: item.meta_title || item.title,
+            description: item.meta_desc,
+            images: item.thumbnail ? [item.thumbnail] : [],
+        },
     };
 }
 
