@@ -25,7 +25,7 @@ const trustSignals = [
 
 const Localization = () => {
     return (
-        <section className="py-24 bg-[#07090f] relative overflow-hidden">
+        <section id="iletisim-lokasyon" className="py-24 bg-[#07090f] relative overflow-hidden">
             {/* Background Light */}
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/5 blur-[150px] rounded-full pointer-events-none" />
 
