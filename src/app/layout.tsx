@@ -71,6 +71,28 @@ export const metadata: Metadata = {
   verification: {
     google: "WyhAS5JfhhBBu_D_JJ-8JIMOjwHckFZHYGYpCq6xbPo",
   },
+  openGraph: {
+    title: "Klas Oto | Peugeot & Citroen Özel Servisi Tuzla",
+    description: "Tuzla'da profesyonel Peugeot ve Citroen özel servisi. Orijinal parça garantisi ve hızlı çözüm.",
+    url: "https://peugeottuzla.com",
+    siteName: "Klas Oto Peugeot & Citroen Özel Servis",
+    locale: "tr_TR",
+    type: "website",
+    images: [
+      {
+        url: "/images/Klas-Oto-Tuzla-Peugeot-Servis-1024x650.jpg",
+        width: 1024,
+        height: 650,
+        alt: "Klas Oto Peugeot & Citroen Özel Servisi Tuzla",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Klas Oto | Peugeot & Citroen Özel Servisi Tuzla",
+    description: "Tuzla'da profesyonel Peugeot ve Citroen özel servisi. Orijinal parça garantisi ve hızlı çözüm.",
+    images: ["/images/Klas-Oto-Tuzla-Peugeot-Servis-1024x650.jpg"],
+  },
 };
 
 export default function RootLayout({
