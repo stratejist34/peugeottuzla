@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Bypass Vercel Image Optimization API to reduce Edge Requests
+    qualities: [60, 75],
   },
   compress: true,
   poweredByHeader: false,
