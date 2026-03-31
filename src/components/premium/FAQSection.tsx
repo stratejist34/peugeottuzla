@@ -32,7 +32,25 @@ const FAQSection = () => {
     const { openContactIntent } = useContactIntent();
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+            }
+        }))
+    };
+
     return (
+        <>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
         <section className="py-32 px-6 relative overflow-hidden bg-black" id="faq">
             {/* Background Effects */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -162,6 +180,7 @@ const FAQSection = () => {
                 </motion.div>
             </div>
         </section>
+        </>
     );
 };
 

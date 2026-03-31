@@ -67,8 +67,58 @@ export default async function DynamicWPPage({ params }: Props) {
 
     const isPost = item.type === 'post';
 
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": isPost
+            ? [
+                { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://peugeottuzla.com" },
+                { "@type": "ListItem", "position": 2, "name": "Rehber", "item": "https://peugeottuzla.com/rehber" },
+                { "@type": "ListItem", "position": 3, "name": item.title, "item": `https://peugeottuzla.com/${item.slug}` },
+            ]
+            : [
+                { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://peugeottuzla.com" },
+                { "@type": "ListItem", "position": 2, "name": item.title, "item": `https://peugeottuzla.com/${item.slug}` },
+            ]
+    };
+
+    const blogPostingSchema = isPost ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": item.title,
+        "description": item.meta_desc,
+        "image": item.thumbnail || "https://peugeottuzla.com/images/Klas-Oto-Tuzla-Peugeot-Servis-1024x650.jpg",
+        "datePublished": item.date,
+        "dateModified": item.date,
+        "url": `https://peugeottuzla.com/${item.slug}`,
+        "author": {
+            "@type": "Organization",
+            "@id": "https://peugeottuzla.com/#business",
+            "name": "Klas Oto | Peugeot & Citroen Özel Servisi"
+        },
+        "publisher": { "@id": "https://peugeottuzla.com/#business" },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://peugeottuzla.com/${item.slug}`
+        },
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", ".article-summary", "h2"]
+        }
+    } : null;
+
     return (
         <main className="min-h-screen bg-black pt-40 pb-20">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            {blogPostingSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+                />
+            )}
             <div className="container mx-auto px-4 lg:px-6">
                 <div className="max-w-7xl mx-auto">
 
@@ -112,6 +162,14 @@ export default async function DynamicWPPage({ params }: Props) {
                                     </div>
                                 )}
                             </header>
+
+                            {/* TL;DR — AI özet kutusu (Speakable hedef) */}
+                            {isPost && item.meta_desc && (
+                                <div className="article-summary mb-10 px-6 py-5 rounded-2xl border border-blue-500/20 bg-blue-500/5">
+                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-2">Özet</p>
+                                    <p className="text-neutral-300 text-sm leading-relaxed">{item.meta_desc}</p>
+                                </div>
+                            )}
 
                             {/* Featured Image */}
                             {item.thumbnail && (
