@@ -71,7 +71,8 @@ const ContactIntentProvider = ({ children }: { children: React.ReactNode }) => {
             trackEvent(eventNames.success, { source: intent.source });
         }
         if (intent.type === 'phone') {
-            window.location.href = intent.href;
+            const href = intent.href;
+            setTimeout(() => { window.location.href = href; }, 150);
         } else {
             window.open(intent.href, '_blank');
         }
