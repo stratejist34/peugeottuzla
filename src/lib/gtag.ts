@@ -19,3 +19,22 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>) 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(['event', eventName, params]);
 };
+
+// Kritik conversion event'leri için server-only send (ad blocker proof, no duplication).
+// Tek bir kayıt — /api/track → Measurement Protocol → GA4.
+// sendBeacon başarısız olursa (çok nadir) client-side gtag'e fallback — yine tek kayıt.
+// ÖNEMLI: GA4_API_SECRET env var'ı set edilmeli, yoksa endpoint 204 döner ve event kaybolur.
+export const trackCriticalEvent = (eventName: string, params?: Record<string, unknown>) => {
+    if (typeof window === 'undefined') return;
+    if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        try {
+            const blob = new Blob([JSON.stringify({ name: eventName, params })], {
+                type: 'application/json',
+            });
+            if (navigator.sendBeacon('/api/track', blob)) return;
+        } catch {
+            // fall through to client-side fallback
+        }
+    }
+    trackEvent(eventName, params);
+};

@@ -11,7 +11,7 @@ import {
     Car,
     ArrowRight
 } from 'lucide-react';
-import { trackEvent } from '@/lib/gtag';
+import { trackEvent, trackCriticalEvent } from '@/lib/gtag';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 
 export default function IletisimClient() {
@@ -92,7 +92,7 @@ export default function IletisimClient() {
                                             return;
                                         }
                                         if (item.eventName === 'konum_tiklandi') {
-                                            trackEvent('konum_tiklandi', { source: 'iletisim_kart' });
+                                            trackCriticalEvent('konum_tiklandi', { source: 'iletisim_kart' });
                                         }
                                         handleContactClick(item.title.toLowerCase().replace(' ', '_'), item.value);
                                     }}
@@ -158,7 +158,7 @@ export default function IletisimClient() {
                                         href="https://maps.app.goo.gl/bze2NgSC2xgxw5LL9"
                                         target="_blank"
                                         onClick={() => {
-                                            trackEvent('konum_tiklandi', { source: 'iletisim_harita' });
+                                            trackCriticalEvent('konum_tiklandi', { source: 'iletisim_harita' });
                                             handleContactClick('konum_yol_tarifi', 'google_maps');
                                         }}
                                         className="bg-white text-black px-6 py-3 rounded-full font-bold text-[10px] uppercase tracking-widest shadow-2xl hover:bg-cyan-500 hover:text-white transition-all pointer-events-auto"

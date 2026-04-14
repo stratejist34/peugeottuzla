@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Phone, MessageCircle, MapPin, Shield, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 import MagneticButton from './MagneticButton';
-import { trackEvent } from '@/lib/gtag';
+import { trackEvent, trackCriticalEvent } from '@/lib/gtag';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
 import { usePathname } from 'next/navigation';
 
@@ -128,7 +128,7 @@ const SafetyCTA = () => {
                                             return;
                                         }
                                         if (item.eventName === 'konum_tiklandi') {
-                                            trackEvent('konum_tiklandi', { source: `${getPagePrefix()}_safety_cta` });
+                                            trackCriticalEvent('konum_tiklandi', { source: `${getPagePrefix()}_safety_cta` });
                                             return;
                                         }
                                         trackEvent(`${getPagePrefix()}_safety_cta_${item.label.toLowerCase().replace(/ /g, '_')}_tiklamasi`);

@@ -3,7 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, MessageCircle, Phone, X } from 'lucide-react';
-import { trackEvent } from '@/lib/gtag';
+import { trackEvent, trackCriticalEvent } from '@/lib/gtag';
 
 type ContactType = 'phone' | 'whatsapp';
 
@@ -65,11 +65,7 @@ const ContactIntentProvider = ({ children }: { children: React.ReactNode }) => {
     const handleConfirm = useCallback(() => {
         if (!intent) return;
         const eventNames = getEventNames(intent.type);
-        if (intent.type === 'whatsapp') {
-            trackEvent(eventNames.success, { source: intent.source });
-        } else {
-            trackEvent(eventNames.success, { source: intent.source });
-        }
+        trackCriticalEvent(eventNames.success, { source: intent.source });
         if (intent.type === 'phone') {
             const href = intent.href;
             setTimeout(() => { window.location.href = href; }, 150);

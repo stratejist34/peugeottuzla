@@ -5,7 +5,7 @@ import { MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactIntent } from '@/components/analytics/ContactIntentProvider';
-import { trackEvent } from '@/lib/gtag';
+import { trackCriticalEvent } from '@/lib/gtag';
 
 const Footer = () => {
     const { openContactIntent } = useContactIntent();
@@ -87,7 +87,7 @@ const Footer = () => {
                         href="https://wa.me/905426084887?text=Merhaba%2C%20PeugeotTuzla.com%20sitesini%20inceledim%20ve%20benzer%20bir%20premium%20dijital%20yap%C4%B1%20kurmak%20istiyorum."
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => trackEvent('site_talebi')}
+                        onClick={() => trackCriticalEvent('site_talebi')}
                         className="text-[10px] text-white/25 hover:text-white/60 transition-colors duration-300 tracking-widest uppercase"
                     >
                         Dijital Mimari &amp; Strateji · Emrah Gümüşsoy
