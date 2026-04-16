@@ -20,21 +20,22 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>) 
     window.dataLayer.push(['event', eventName, params]);
 };
 
-// Kritik conversion event'leri için server-only send (ad blocker proof, no duplication).
-// Tek bir kayıt — /api/track → Measurement Protocol → GA4.
-// sendBeacon başarısız olursa (çok nadir) client-side gtag'e fallback — yine tek kayıt.
-// ÖNEMLI: GA4_API_SECRET env var'ı set edilmeli, yoksa endpoint 204 döner ve event kaybolur.
+// Kritik conversion event'leri için dual-send:
+// 1) Client-side gtag — birincil, güvenilir, hızlı
+// 2) Server-side /api/track — ad blocker kullanan ~%20 kullanıcıyı yakalar
+// GA4 aynı client_id + event'i tekrar görürse event sayısı 2x olabilir
+// ama Google Ads dönüşüm attribution kullanıcı bazlı çalıştığı için 1 dönüşüm kalır.
 export const trackCriticalEvent = (eventName: string, params?: Record<string, unknown>) => {
     if (typeof window === 'undefined') return;
+    // Birincil: her zaman client-side
+    trackEvent(eventName, params);
+    // Ek güvence: server-side (sendBeacon fire-and-forget, failure'ı yutulur)
     if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
         try {
-            const blob = new Blob([JSON.stringify({ name: eventName, params })], {
-                type: 'application/json',
-            });
-            if (navigator.sendBeacon('/api/track', blob)) return;
-        } catch {
-            // fall through to client-side fallback
-        }
+            navigator.sendBeacon(
+                '/api/track',
+                new Blob([JSON.stringify({ name: eventName, params })], { type: 'application/json' })
+            );
+        } catch { /* ignore */ }
     }
-    trackEvent(eventName, params);
 };
