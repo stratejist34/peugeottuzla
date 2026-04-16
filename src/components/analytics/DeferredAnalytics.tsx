@@ -46,6 +46,7 @@ const DeferredAnalytics = () => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+          gtag('config', 'AW-17432793907');
         `}
             </Script>
         </>
