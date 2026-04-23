@@ -1,9 +1,9 @@
 'use client';
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, MessageCircle, Phone, X } from 'lucide-react';
-import { trackEvent, trackCriticalEvent } from '@/lib/gtag';
+import { trackCriticalEventOncePerSession, trackEvent } from '@/lib/gtag';
 
 type ContactType = 'phone' | 'whatsapp';
 
@@ -44,8 +44,10 @@ const getEventNames = (type: ContactType) => {
 
 const ContactIntentProvider = ({ children }: { children: React.ReactNode }) => {
     const [intent, setIntent] = useState<ContactIntentPayload | null>(null);
+    const resolutionLockedRef = useRef(false);
 
     const openContactIntent = useCallback((payload: ContactIntentPayload) => {
+        resolutionLockedRef.current = false;
         const eventNames = getEventNames(payload.type);
         trackEvent(eventNames.intent, { source: payload.source });
         setIntent(payload);
@@ -53,6 +55,8 @@ const ContactIntentProvider = ({ children }: { children: React.ReactNode }) => {
 
     const closeWithCancel = useCallback((reason?: string) => {
         if (!intent) return;
+        if (resolutionLockedRef.current) return;
+        resolutionLockedRef.current = true;
         const eventNames = getEventNames(intent.type);
         if (intent.type === 'whatsapp') {
             trackEvent(eventNames.cancel, { source: intent.source, reason });
@@ -64,8 +68,10 @@ const ContactIntentProvider = ({ children }: { children: React.ReactNode }) => {
 
     const handleConfirm = useCallback(() => {
         if (!intent) return;
+        if (resolutionLockedRef.current) return;
+        resolutionLockedRef.current = true;
         const eventNames = getEventNames(intent.type);
-        trackCriticalEvent(eventNames.success, { source: intent.source });
+        trackCriticalEventOncePerSession(eventNames.success, { source: intent.source });
         if (intent.type === 'phone') {
             const href = intent.href;
             setTimeout(() => { window.location.href = href; }, 150);
